@@ -1,0 +1,27 @@
+// Добавив міксіни
+@mixin for-pixel-ratio-2 {
+
+    @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+        @content;
+    }
+}
+
+@mixin media-min ($min-width) {
+    @media screen and (min-width:$min-width) {
+        @content;
+    }
+}
+
+@mixin media-max ($max-width) {
+    @media screen and (max-width:$max-width) {
+        @content;
+    }
+}
+
+@mixin media-min-max ($min-width, $max-width) {
+    @media screen and (min-width:$min-width) and (max-width:$max-width) {
+        @content;
+    }
+}
