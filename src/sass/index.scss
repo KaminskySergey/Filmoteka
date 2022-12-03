@@ -1,2 +1,13 @@
+
+
+@import './base/common';
+@import './base/normalize';
+@import './base/nulling-style';
+@import './base/variables';
+
+@import './components/header';
+@import './components/gallery';
+@import './components/footer';
+
+@import './utills/visually-hidden';
 @import './common';
-@import './example';
