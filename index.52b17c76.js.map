@@ -1,0 +1,1 @@
+{"mappings":"AAAA,MAAMA,EAAaC,SAASC,cAAc,sBAC1CC,QAAQC,IAAIJ","sources":["src/js/footer/footer.js"],"sourcesContent":["const footerCont = document.querySelector('.footer-text__cont')\nconsole.log(footerCont);\n\nfn()\nfunction fn(){\n    \n}"],"names":["$e3df9fa382790207$var$footerCont","document","querySelector","console","log"],"version":3,"file":"index.52b17c76.js.map"}
