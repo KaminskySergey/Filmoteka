@@ -1,0 +1,116 @@
+.footer{
+    background-color: var(--bgc-footer-arrow);
+    
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-cont{
+    
+    @media screen and (max-width:767px) {
+    padding: 29px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    @media screen and (min-width:768px){
+        padding: 30px 0;
+        display: flex;
+    }
+}
+
+.footer-text--one{
+    @media screen and (max-width:767px) {
+        margin-bottom: 10px;
+        }
+}
+
+.footer-text--two{
+    @media screen and (min-width:768px){
+        padding-left: 4px;
+    }
+}
+
+.footer-cont__text{
+    
+        display: flex;
+    align-items: center;
+    justify-content: center;
+        
+    
+}
+.footer-text{
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: var(--color-footer);
+
+@media screen and (min-width:768px){
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+}
+
+}
+
+.footer-text__cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: transformMilk;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+}
+
+.footer-svg{
+    cursor: pointer;
+    background-color: transparent;
+    margin: 0 10px;
+    border-radius: 50%;
+  
+          transition:         transform 1s ease-in-out;
+    
+    &:hover{
+    transition: box-shadow var(--default-transition),transform 1s cubic-bezier(.4,0,.2,1);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    }
+    &:focus{
+        transition: box-shadow var(--default-transition),transform 1s cubic-bezier(.4,0,.2,1);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    }
+}
+
+.footer-btn{
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--color-footer);
+    transition: var(--default-transition);
+    
+    &:hover{
+        color: var(--color-underline);
+    }
+    &:focus{
+        color: var(--color-underline);
+    }
+    @media screen and (max-width:767px){
+        font-size: 14px;
+        line-height: 16px;
+    }
+    @media screen and (min-width:768px){
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
