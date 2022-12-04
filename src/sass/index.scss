@@ -1,14 +1,14 @@
-
-
 @import './base/common';
 @import './base/normalize';
 @import './base/nulling-style';
 @import './base/variables';
+
+@import './utils/visually-hidden';
+@import './utils/mixins';
+@import './common';
 
 @import './components/header';
 @import './components/gallery';
 @import './components/footer';
 @import './components/footer-modal';
 
-@import './utills/visually-hidden';
-@import './common';

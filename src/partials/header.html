@@ -1,3 +1,30 @@
-<header>
-    <h1>hello</h1>
+<header class="header">
+    <div class="header__container container">
+        <div class="header__thumb">
+            <div class="header__logo">
+                <a class="logo" href="#">
+                    <svg class="logo__icon">
+                        <use href="/src/images/sprite.svg#icon-film"></use>
+                    </svg>
+                    <span class="logo__span">Filmoteka</span>
+                </a>
+            </div>
+            <div class="header__nav">
+                <ul class="navigation">
+                    <li class="navigation__list"><a class="navigation__link" href="#">home</a></li>
+                    <li class="navigation__list"><a class="navigation__link" href="#">my library</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header__form">
+            <form class="form-search">
+                <input class="form-search__input" type="text" placeholder="Movie search"></input>
+                <button class="form-search__submit" type="submit">
+                    <svg class="form-search__icon">
+                        <use href="/src/images/sprite.svg#icon-search"></use>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
 </header>
