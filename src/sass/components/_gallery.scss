@@ -1,7 +1,11 @@
 .gallery {
     padding-top: 20px;
     padding-bottom: 40px;
-      
+
+    @media screen and (min-width:768px){
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
 }
 
 .gallery__list {
@@ -9,7 +13,6 @@
         display: flex;
         flex-wrap: wrap;
         margin: -16px;
-
     }
 
     @media screen and (min-width:1280px){
@@ -27,20 +30,20 @@
     @media screen and (min-width:768px){
         margin: 16px;
         height: 495px;
-        width: 336px;
-        
+        // width: 336px;
+        width: calc((100% - 64px) / 2);
     }
 
     @media screen and (min-width:1280px){
         margin: 8px;
         height: 634px;
-        width: 395px;
-        
+        // width: 395px;
+        width: calc((100% - 96px) / 3);
     }
 }
 
-.gallery__placefolder-card {
-    height: 100%;
-    width: 100%;
-    background-color: orange;
-}
+// .gallery__placeholder-card {
+//     height: 100%;
+//     width: 100%;
+//     background-color: orange;
+// }
