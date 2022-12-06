@@ -1,4 +1,4 @@
-<header class="header">
+<header class="my_library-header">
     <div class="header__container container">
         <div class="header__thumb">
             <div class="header__logo">
@@ -13,20 +13,28 @@
             </div>
             <div class="header__nav">
                 <ul class="navigation">
-                    <li class="navigation__list navigation__list-active"><a class="navigation__link" href="/src/index.html">home</a></li>
-                    <li class="navigation__list"><a class="navigation__link" href="/src/my-library.html">my library</a></li>
+                    <li class="navigation__list"><a class="navigation__link" href="/src/index.html">home</a></li>
+                    <li class="navigation__list  navigation__list-active"><a class="navigation__link" href="/src/my-library.html">my library</a></li>
                 </ul>
             </div>
         </div>
-        <div class="header__form">
-            <form class="form-search">
+        <div class="header__btn">
+            <ul class="header-my_library-btn">
+                <li class="my_library-btn_list ">
+                  <button class="my_library-btn_watched  is-active">watched</button>
+                </li>
+                <li class="my_library-btn_list ">
+                  <button class="my_library-btn_queue ">queue</button>
+                </li>
+              </ul> 
+            <!-- <form class="form-search">
                 <input class="form-search__input" type="text" placeholder="Movie search"></input>
                 <button class="form-search__submit" type="submit">
                     <svg class="form-search__icon">
                         <use href="/src/images/sprite.svg#icon-search"></use>
                     </svg>
                 </button>
-            </form>
+            </form> -->
         </div>
     </div>
 </header>
