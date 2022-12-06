@@ -1,0 +1,214 @@
+body.show-modal .footer-backdrop{
+    pointer-events: initial;
+    visibility: visible;
+    opacity: 1;
+}
+
+.footer-backdrop{
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+pointer-events: none;
+visibility: hidden;
+opacity: 0;
+background-color: rgba(0, 0, 0, 0.3);
+z-index: 3;
+}
+
+
+.footer-modal{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#000000, red) fixed;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        padding: 10px 20px 15px 20px;
+        overflow-y: scroll;
+        
+        @media screen and (min-width:768px){
+            width: 560px;
+            height: 300px;
+        }
+
+        @media screen and (min-width:1280px){
+            width: 1000px;
+            height: 600px;
+            
+        }
+    
+}
+
+// style scroll ///////////////////////
+.footer-modal::-webkit-scrollbar {
+    width: 5;
+
+  }
+  
+  .footer-modal::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+  }
+  
+  .footer-modal::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, red, black);
+  }
+
+//==========================
+
+.footer-modal h2{
+    display: flex;
+    justify-content: center;
+}
+.footer-modal__svg{
+    fill: #ffffff;
+    height: 100px;
+}
+
+.footer-team__list{
+    display: flex;
+    @media screen and (max-width:767px){
+        flex-direction: column;
+        align-items: center;
+    }
+    @media screen and (min-width:768px){
+        flex-wrap: wrap;
+        margin: -15px;
+    }
+}
+
+.footer-item{
+    cursor: pointer;
+    @media screen and (max-width:767px){
+        margin-bottom: 20px;
+    
+    height: 300px;
+    height: auto;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    }
+    
+    @media screen and (min-width:768px){
+        width: calc((100% - 6 * 15px) / 3);
+        margin: 15px;
+        
+    }
+
+    @media screen and (min-width:1280px){
+        width: calc((100% - 8 * 15px) / 4);
+        
+    }
+    position: relative;
+    overflow:hidden;
+    
+    transition: var(--default-transition);
+    
+    &:hover, &:focus{
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 28px 30px rgba(0,0,0,0.3);
+        transform: scale(1.1)
+    }
+
+    &:hover .footer-img-name, &:focus .footer-img-name{
+        transform: translateY(3%);
+        
+    }
+}
+
+
+.footer-img__team{
+    height: 300px;
+    width: 256px;
+    
+    @media screen and (min-width:768px){
+        height: 180px;
+        
+    }
+    @media screen and (min-width:1280px){
+        height: 250px;
+        
+    }
+}
+
+.footer-img-name{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.8;
+    color: white;
+    transform: translateY(100%);
+    
+    transition: var(--default-transition);
+}
+
+// font-size ///////////////////////////////
+.footer-item__title{
+    margin-bottom: 3px;
+}
+
+@media screen and (min-width:768px){
+    .footer-item__title{
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+    .footer-item__work{
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width:1280px){
+    .footer-item__title{
+        font-size: 17px;
+        margin-bottom: 3px;
+    }
+    .footer-item__work{
+        font-size: 15px;
+    }
+}
+////////////////////////////////////////////
+.footer-modal__close{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 50%;
+    border-color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    transition: var(--default-transition);
+    stroke: white;
+    &:hover, &:focus{
+        border-color: yellow;
+        color: yellow;
+        transform: scale(1.1);
+    }
+
+    &:hover .footer-modal__close--svg, &:focus .footer-modal__close--svg{
+        
+        stroke: yellow;
+        
+    }
+
+}
+
+.footer-modal__close--svg{
+    transition: var(--default-transition);
+}
