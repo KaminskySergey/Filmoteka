@@ -55,7 +55,7 @@ async function test(page) {
 function getDate(data) {
     if (data !== 0) {
         console.log(data)
-        return date
+        return data
     }
     else {
         console.log('bad')
