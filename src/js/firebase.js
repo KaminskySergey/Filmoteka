@@ -363,8 +363,6 @@ const firebaseConfig = {
   appId: "1:1008932581270:web:6d27972f39650ac22cf7b7"
 };
 
-
-
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, getDocs } from 'firebase/firestore/lite';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";      
@@ -376,6 +374,9 @@ const auth = getAuth(app);
 const signUpBtn = document.querySelector('#signUp');
 const signInBtn = document.querySelector('#signIn');
 const signOutBtn = document.querySelector('#signOut');
+
+console.log(signInBtn)
+
 
 const nickName = document.querySelector('#displayName');
 const email = document.querySelector('#email');

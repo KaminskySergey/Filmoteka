@@ -19,10 +19,10 @@ async function getMovies() {
 
 async function getMoviesInfo() {
   const movies = await getMovies();
-  console.log(movies);
+  // console.log(movies);
   // const markup = "";
   movies.results.forEach(movie => {
-    console.log(movie);
+    // console.log(movie);
     const markup = createMoviesList(movie);
     gallery.insertAdjacentHTML('beforeend', markup);
   });
@@ -47,7 +47,7 @@ async function fetchGenres() {
   });
   const { genres } = response.data;
   genreArray = genres;
-  console.log(genreArray);
+  // console.log(genreArray);
   return;
 }
 
@@ -61,8 +61,8 @@ function decodeGenres([...args]) {
     })
   );
 
-  console.log(args);
-  console.log(genres);
+  // console.log(args);
+  // console.log(genres);
   return genres.join(', ');
 }
 
