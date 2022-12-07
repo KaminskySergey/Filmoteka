@@ -35,31 +35,12 @@ export const team = [
         name: "Oksana",
         surname: "Mashtaler",
         img: "/Oksana.84ef82e6.jpg",
+        wokr: "pagination / language",
         films: 
             [
-            { name: 'With Pulp Fiction', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7FaHjGa4RvKJZHzY7c9UgTTH9KN.jpg'},
-            { name: 'Interstellar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wUmyEjrLqYpJYjVMD2YR7IffFeE.jpg'},
-            { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
-            ]
-        ,
-        actors: [
-            
-            { name: 'David Tennant', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/zM76EBPZkdkSHyESyIUa47aP87R.jpg'},
-            { name: 'Jackie Chan', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg'},
-            { name: 'Helena Bonham Carter', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/DDeITcCpnBd0CkAIRPhggy9bt5.jpg'},
-            
-        ],
-    },
-    {
-        id: 4,
-        name: "Maks",
-        surname: "Budiukin",
-        img: "/Maks.661c2508.jpg",
-        films: 
-            [
-            { name: 'Fight Club', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66RvLrRJTm4J8l3uHXWF09AICol.jpg'},
-            { name: 'The night Watch', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dq1wUZFLFJ32iJOD9HkkA2CE91R.jpg'},
-            { name: 'American History X', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2dIE1KOc7Fa3FIMzph8mBJK17KM.jpg'},
+                { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
+                { name: 'Interstellar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wUmyEjrLqYpJYjVMD2YR7IffFeE.jpg'},
+                { name: 'With Pulp Fiction', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7FaHjGa4RvKJZHzY7c9UgTTH9KN.jpg'},
             ]
         ,
         actors: [
@@ -71,10 +52,32 @@ export const team = [
         ],
     },
     {
+        id: 4,
+        name: "Maks",
+        surname: "Budiukin",
+        img: "/Maks.661c2508.jpg",
+        wokr: "firebase",
+        films: 
+            [
+            { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
+            { name: 'The night Watch', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dq1wUZFLFJ32iJOD9HkkA2CE91R.jpg'},
+            { name: 'Fight Club', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66RvLrRJTm4J8l3uHXWF09AICol.jpg'},
+            ]
+        ,
+        actors: [
+            
+            { name: 'Helena Bonham Carter', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/DDeITcCpnBd0CkAIRPhggy9bt5.jpg'},
+            { name: 'Jackie Chan', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg'},
+            { name: 'David Tennant', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/zM76EBPZkdkSHyESyIUa47aP87R.jpg'},
+            
+        ],
+    },
+    {
         id: 5,
         name: "Olena",
         surname: "Pastushenko",
         img: "/Olena.4b435dbf.jpg",
+        work: "gallery",
         films: 
             [
                 "" ,
@@ -90,6 +93,7 @@ export const team = [
         name: "Yurii",
         surname: "....",
         img: "/Yurik.ccd2c66b.jpg",
+        work: "",
         films: 
             [
             { name: 'About time', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xWk8ukJ6dhRvlrboG3qgNWNtLJ1.jpg'},
@@ -109,8 +113,9 @@ export const team = [
     {
         id: 7,
         name: "Anastasiia",
-        surname: "Botoday",
+        surname: "Boroday",
         img: "/Anastasya.cae8ad5a.jpg",
+        work: "modal card",
         films: 
             [
                 { name: 'Tag', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4GTpZgK5ijNGzJSB6tXjz8Xz7t2.jpg'},
@@ -128,19 +133,26 @@ export const team = [
         ],
     },
     {
-        id: 8,
+        id: 8,         
         name: "Ruslan",
         surname: "Samigulin",
         img: "/Ruslan.033fe336.jpg",
+        work: "render card",
         films: 
             [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
-            ]
+                { name: 'The Great Gatsby', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWJ7cIEF8hYSjFlpkdS64s8lHb2.jpg'},
+                { name: 'The Equalizer', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hc1tXFITduL2nm5CqORSmlwAOlI.jpg'},
+                { name: 'Pirates of the Caribbean', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            
+        ]
         ,
+        actors: [
+            
+            { name: 'Leonardo Wilhelm DiCaprio', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg'},
+            { name: 'Denzel Washington', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/AHUnhGbnWnjin4M2sNdZYAei9h.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            
+        ],
     },
     {
         id: 9,
@@ -162,6 +174,7 @@ export const team = [
         name: "Vladislav",
         surname: "Lisovyi",
         img: "/Vlad.a47781ee.jpg",
+        work: "filter by genre",
         films: 
             [
                 "" ,
@@ -189,6 +202,27 @@ export const team = [
     },
     {
         id: 12,
+        name: "Vlad",
+        surname: "Bodnar",
+        img: "/src/images/team/VladBodnar.jpg",
+        films: 
+        [
+            { name: 'Matrix', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6nd3J3eCozReal6In5Dy18xDdmA.jpg'},
+            { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
+            { name: 'Wanted', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/j0YQlXsfcYm5WQJS7i1XZWI5amk.jpg'},
+        ]
+        ,
+        actors: [
+            
+            { name: 'Milla Jovovich', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/usWnHCzbADijULREZYSJ0qfM00y.jpg'},
+            { name: 'Jason Statham', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lldeQ91GwIVff43JBrpdbAAeYWj.jpg'},
+            { name: 'Angelina Jolie', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/k3W1XXddDOH2zibPkNotIh5amHo.jpg'},
+            
+        ],
+        
+    },
+    {
+        id: 13,
         name: "Serhii",
         surname: "Kaminskyi",
         img: "/Serhii.f93cdbe1.jpg",
@@ -208,21 +242,5 @@ export const team = [
             
         ],
     },
-    {
-        id: 13,
-        name: "Vlad",
-        surname: "Bodnar",
-        img: "/src/images/team/VladBodnar.jpg",
-        films: 
-            [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
-            ]
-        ,
-        
-    }
 ]
 
