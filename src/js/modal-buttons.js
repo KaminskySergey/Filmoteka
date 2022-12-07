@@ -14,10 +14,15 @@ const addToQueueBtn = document.querySelector(`[data-action="queue"]`);
 addToWatchedBtn.addEventListener("click", addToWatched);
 addToQueueBtn.addEventListener("click", addToQueue);
 
-const localStorageIsNotEmpty = localStorage.getItem(LOCALSTORAGE_WATCHED);
-if (localStorageIsNotEmpty){
+const watchedListIsNotEmpty = localStorage.getItem(LOCALSTORAGE_WATCHED);
+if (watchedListIsNotEmpty){
     addToWatchedBtn.textContent = "remove from Watched";
-}
+};
+
+const queueIsNotEmpty = localStorage.getItem(LOCALSTORAGE_QUEUE);
+if (queueIsNotEmpty){
+    addToQueueBtn.textContent = "remove from queue";
+};
 
 function addToWatched () {
     if (addToWatchedBtn.textContent === "add to Watched") {
@@ -43,5 +48,23 @@ function removeFromWatched (movie) {
 }
 
 function addToQueue () {
+    if (addToQueueBtn.textContent === "add to queue") {
+        queueOfMovies.push("movie-object-in-JSON");
+        localStorage.setItem(LOCALSTORAGE_QUEUE, queueOfMovies);
+        addToQueueBtn.textContent = "remove from queue";
+        return;
+    };
+ 
+    removeFromQueue("movie-object-in-JSON");
+    addToQueueBtn.textContent = "add to queue";
+};
 
+function removeFromQueue (movie) {
+    const indexOfRemovedMovie = queueOfMovies.indexOf(movie);
+    queueOfMovies.splice(indexOfRemovedMovie, 1);
+    if (queueOfMovies.length === 0) {
+        localStorage.removeItem(LOCALSTORAGE_QUEUE);
+        return;
+    };
+    localStorage.setItem(LOCALSTORAGE_QUEUE, queueOfMovies);
 }
