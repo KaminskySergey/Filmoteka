@@ -236,6 +236,8 @@ $desktop: 1024px;
 
 // // -----------------btn-----------------------------
 .modal__btn-list {
+  margin-bottom: 20px;
+
   display: flex;
   justify-content: space-between;
 
@@ -287,22 +289,19 @@ $desktop: 1024px;
       0 0 10px 4px var(--color-category);
   }
 }
-// .modal__btn-wrap{
-//   position: relative;
-// }
+
 .modal_btn-play {
-  position: absolute;
   left: 210px;
   bottom: 117px;
 
-  width: 50px;
-  height: 50px;
+  width: 240px;
+  height: 44px;
   cursor: pointer;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-genre);
   text-shadow: 0 5px 10px var(--color-genre);
-  border-radius: 50%;
+  border-radius: 5px;
   border: 2px solid var(--color-genre);
   background-color: var(--color-title);
 
@@ -315,5 +314,14 @@ $desktop: 1024px;
     scale: 1.1;
     box-shadow: 0 1.5em 1.5em -0.4em var(--color-genre);
   }
+
+    @media screen and (min-width: $tablet) {
+      width: 265px;
+    }
+  
+    @media screen and (min-width: $desktop) {
+      width: 287px;
+
+      }
 }
 

@@ -4,6 +4,12 @@ import * as basicLightbox from 'basiclightbox';
 const getRef = selector => document.querySelector(selector);
 const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
+// -------------------------------------------------
+const btnCloseRef = document.querySelector('.modal__btn-close');
+const modalRef = document.querySelector('[data-modal]');
+const backdropRef = document.querySelector('.backdrop');
+// -------------------------------------------------
+
 let movieID = '';
 let movieInfo = '';
 
@@ -33,7 +39,7 @@ function createMurkupModal({
           <img class="modal__img"
             src="https://image.tmdb.org/t/p/w500${poster_path}"
             alt="Обкладинка фільму">
-          <button class="modal_btn-play">Play</button>
+          
         
         <div class="modal-container-columns">
           <p class="modal__name">${original_title}</p>
@@ -79,6 +85,7 @@ function createMurkupModal({
             <button type="button" class="modal__btn queue">add to queue</button>
           </li>
         </ul>
+        <button class="modal_btn-play">Play</button>
       </div>
    
   </div>
@@ -86,6 +93,7 @@ function createMurkupModal({
 }
 
 async function renderMarkupModal(e) {
+  document.addEventListener('keydown', onEscPress);
   toggleModal();
 
   movieID = await e.target.parentElement.dataset.id;
@@ -115,4 +123,33 @@ async function getTrailer() {
 `);
 
   instance.show();
+}
+function clearModal()
+  {getRef('.modal-container').remove();  
+}
+// ----------------------------------------------------------------------------
+
+
+
+btnCloseRef.addEventListener('click', onClosModal);
+backdropRef.addEventListener('click', onBackdropClick);
+
+function onClosModal() {
+    clearModal();
+    document.removeEventListener('keydown', onEscPress);
+    modalRef.classList.toggle('is-hidden');
+
+}
+function onBackdropClick(evt) {
+   
+    if (evt.target===evt.currentTarget) {
+        onClosModal();
+    }
+}
+function onEscPress(evt) {
+ 
+    const KEY_KODE_ESC = 'Escape';
+    if (evt.code===KEY_KODE_ESC) {
+        onClosModal();
+    }
 }
