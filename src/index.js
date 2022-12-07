@@ -11,7 +11,7 @@ import './js/gallery/popular_movie'
 
 // pagination=============
 import './js/pagination/pagination';
-
+import './js/api'
 // footer ==============================
 import './js/footer/footer-modal';
 import './js/footer/modal-team';
