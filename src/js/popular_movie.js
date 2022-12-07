@@ -37,7 +37,7 @@ function createMoviesList(movie) {
 
     return `
  <li class="gallery__item thumb" data-id="";>
- <img width="280px" height="402px" src= '${IMG_URL}${movie.poster_path}' />
+ <img loadind="lazy" alt="movie poster" src= '${IMG_URL}${movie.poster_path}' />
  <p>'${movie.title}'</p>
  <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
   </li> 
