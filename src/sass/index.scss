@@ -3,7 +3,6 @@
 @import './base/nulling-style';
 @import './base/variables';
 
-
 @import './utils/visually-hidden';
 @import './utils/mixins';
 @import './common';
@@ -13,12 +12,15 @@
 @import './components/header-library';
 @import './components/gallery';
 
-
+@import './components/pagination.scss';
 @import './components/footer';
 @import './components/footer-modal';
 @import './components/footer-modal-team';
 
-
 @import './components/filter-buttons-header';
-@import './components/up-button'
+@import './components/up-button';
 
+@import './components/modal-movie';
+
+@import './components/feedback-modal';
+@import './components/thank-page';
