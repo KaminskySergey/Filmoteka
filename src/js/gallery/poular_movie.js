@@ -75,7 +75,7 @@ function decodeGenres([...args]) {
 
 }
 
-
+export {fetchGenres, decodeGenres, IMG_URL}
 
 
 
