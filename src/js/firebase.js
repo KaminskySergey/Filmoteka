@@ -406,9 +406,9 @@ signOutBtn.addEventListener('click', signUserOut);
         // let delBtn = document.getElementById("DelBtn");
 
         
-        async function AddDocument_CustomID() {
-          const ref = doc(db, "Watched", currentUser.email)
-          const docRef = await setDoc(ref, {})
+        async function AddDocument_Watched() {
+          const refWatched = doc(db, "Watched", currentUser.email)
+          const docRef = await setDoc(refWatched, {})
             
             .then(() => {
               console.log('Successful operation!')
@@ -417,6 +417,20 @@ signOutBtn.addEventListener('click', signUserOut);
               alert("Unsuccessful operation, error:" + error);
             })
         }
+
+
+        async function AddDocument_Queue() {
+          const refWatched = doc(db, "Queue", currentUser.email)
+          const docRef = await setDoc(refWatched, {})
+            
+            .then(() => {
+              console.log('Successful operation!')
+            })
+            .catch((error) => {
+              alert("Unsuccessful operation, error:" + error);
+            })
+}
+        
 
         async function GetADocument() {
           var ref = doc(db, "Watched", currentUser.email);
@@ -455,7 +469,8 @@ function signUp() {
     // Signed in 
     const user = userCredential.user;
     console.log(userName)
-    AddDocument_CustomID();
+      AddDocument_Watched();
+      AddDocument_Queue();
     updateProfile(auth.currentUser, {
         displayName: nickName.value
     })
