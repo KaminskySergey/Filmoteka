@@ -1,4 +1,7 @@
 import axios from "axios";
+import { fetchGenres } from "../gallery/poular_movie";
+import { decodeGenres } from "../gallery/poular_movie";
+import { IMG_URL } from "../gallery/poular_movie";
 
 const ref = {
     searchForm: document.querySelector('.form-search'),
@@ -6,27 +9,33 @@ const ref = {
     searchButton: document.querySelector('.form-search__submit'),
 }
 
+let genreArray = [];
 let page = 1;
 let inputValue = "";
 const BASE_URL = "https://api.themoviedb.org/3/search/movie";
 const MY_KEY = "api_key=102d4305e0abdbf0fd48836d5abb1978"
 
-ref.searchForm.addEventListener("submit", makeSubmit)
+fetchGenres()
+
+if (!!ref.searchForm) {
+    
+    ref.searchForm.addEventListener("submit", makeSubmit)
+}
 
 function makeSubmit(e) {
     e.preventDefault(); 
     
-    inputValue = e.target[0].value
+    inputValue = e.target[0].value.trim()
 
     if (inputValue === "") { 
-
+        
         return
     } else {
-
-        test(page)
+        
+        makeMarkup(page)
     }
     // console.log(inputValue)
-
+    
 }
 
 async function fetchAxios(page) {
@@ -34,9 +43,6 @@ async function fetchAxios(page) {
     const data = urlObject.data;
     const dataStatus = urlObject.status;
     const dataResults = data.results;
-
-    // console.log(dataResults)
-    // console.log(dataStatus)
 
     if (dataStatus === 200 && dataResults.length > 0) {
         // console.log(data);
@@ -47,15 +53,26 @@ async function fetchAxios(page) {
     }
 }
 
-async function test(page) {
+async function makeMarkup(page) {
     const data = await fetchAxios(page);
-    const total = await getDate(data)
+    const total = await createMarkupList(data);
+
+
 }
 
-function getDate(data) {
+function createMarkupList(data) {
     if (data !== 0) {
-        console.log(data)
-        return date
+        const markup = data.results.map((movie)=>{
+            // console.log(movie)
+            return `
+            <li class="" data-id="">
+                <img width="280px" height="402px" src= '${IMG_URL}${movie.poster_path}' />
+                <p>'${movie.title}'</p>
+                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
+            </li> 
+              `
+        }).join('');
+        return markup
     }
     else {
         console.log('bad')
