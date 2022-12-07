@@ -74,19 +74,19 @@ line-height: 19px;
     margin: 0 10px;
     border-radius: 50%;
   
-          transition:         transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
     
     &:hover{
     transition: box-shadow var(--default-transition),transform 1s cubic-bezier(.4,0,.2,1);
     transform: rotate(0deg);
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    // transform: rotate(360deg);
     }
     &:focus{
         transition: box-shadow var(--default-transition),transform 1s cubic-bezier(.4,0,.2,1);
     transform: rotate(0deg);
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    // transform: rotate(360deg);
     }
 }
 
