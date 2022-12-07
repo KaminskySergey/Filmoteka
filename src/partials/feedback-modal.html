@@ -1,0 +1,41 @@
+<button class="open-feedback-modal-btn" type="button" data-action="open-feedback-modal">Open support modal</button>
+
+<div class="js-feedback-backdrop is-hidden">
+    <div class="feedback-modal">
+        <button class="button feedback-form__close-btn" data-action="close-feedback-modal">
+            <svg class="feedback-form__close-icon" height="30" width="30">
+                <use href="/src/images/sprite.svg#icon-close"></use>
+            </svg>
+        </button>        
+        <form class="feedback-form" target="_blank" action="https://formsubmit.co/filmoteka.feedback@gmail.com" method="POST" autocomplete="off">
+            
+            <h2 class="feedback-form__title">Have any question? Fill out the form below to contact with us</h2>
+            <input type="hidden" name="_next" value="https://evgenaltunin.github.io/goit-js-hw-11/thank-page.html">
+            <label class="feedback-form__lable">
+                Name:
+                <div class="feedback-form__thumb">
+                    <input class="feedback-form__input feedback-form__input--name" type="text" name="name" placeholder="Enter your name" required/>
+                    <svg class="feedback-form__input-icon" height="18" width="18">
+                        <use href="/src/images/sprite.svg#icon-person"></use>   
+                    </svg>
+                </div>
+                
+            </label> 
+            <label class="feedback-form__lable">
+                Email:
+                <div class="feedback-form__thumb">
+                    <input class="feedback-form__input feedback-form__input--email" type="email" placeholder="example@email.com" name="email" required/>
+                    <svg class="feedback-form__input-icon" height="18" width="18">
+                        <use href="/src/images/sprite.svg#icon-email"></use>
+                    </svg>
+                </div>
+                
+            </label>
+            <label class="feedback-form__lable">
+                Message:
+                <textarea class="feedback-form__input feedback-form__input--textarea-message" name="message" placeholder="Enter your question here" name="userMessage" required></textarea>
+            </label>
+            <button class="button feedback-form__submit-button" type="submit">SEND</button>
+        </form>
+    </div>
+</div>
