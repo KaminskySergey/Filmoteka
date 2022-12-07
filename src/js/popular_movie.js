@@ -21,7 +21,7 @@ async function getMovies() {
 
 async function getMoviesInfo() {
     const movies = await getMovies();
-    const markup = "";
+    
     movies.results.forEach((movie) => {
         console.log(movie);
         const markup = createMoviesList(movie);
