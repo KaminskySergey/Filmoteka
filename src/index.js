@@ -6,7 +6,7 @@ import './js/up-button/_up-button'
 
 
 // gallery ===========================
-import './js/gallery/poular_movie'
+import './js/gallery/popular_movie'
 
 
 
