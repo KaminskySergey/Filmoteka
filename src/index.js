@@ -13,3 +13,6 @@ import './js/pagination/pagination';
 import './js/footer/footer-modal';
 import './js/footer/modal-team';
 import './js/footer/footer-modal-team';
+
+// modal movies ==============================
+import './js/modal-movies/modal-movies';
