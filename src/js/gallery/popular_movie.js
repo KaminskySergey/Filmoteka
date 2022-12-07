@@ -53,7 +53,7 @@ async function fetchGenres() {
     )
     const { genres } = response.data;
     genreArray = genres;
-    console.log(genreArray);
+    // console.log(genreArray);
     return;
 }
 
@@ -65,8 +65,8 @@ function decodeGenres([...args]) {
         }
     }))
 
-    console.log(args);
-    console.log(genres);
+    // console.log(args);
+    // console.log(genres);
     return genres.join(", ");
 }
 

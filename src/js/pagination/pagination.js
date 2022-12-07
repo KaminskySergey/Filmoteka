@@ -1,16 +1,15 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-
+import 'tui-pagination/dist/tui-pagination.min.css';
+import ApiService from '../api';
 const container = document.getElementById('tui-pagination-container');
 
-const options = {
-  totalItems: 200,
+const apiService = new ApiService();
+const pagination = new Pagination(container, {
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
@@ -28,5 +27,27 @@ const options = {
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },
+});
+// =====================
+pagination.on('beforeMove', async evt => {
+  apiService.page = evt.page;
+  const movies = await apiService.fetch();
+});
+
+let totalItemsFromServer;
+
+const init = async total => {
+  if (total === undefined && !totalItemsFromServer)
+    totalItemsFromServer = await apiService.fetch();
+
+  if (total === undefined) total = totalItemsFromServer.total_results;
+
+  pagination.setTotalItems(total);
+  pagination.reset();
 };
-const pagination = new Pagination(container, options);
+
+init();
+
+export default {
+  reset: init,
+};
