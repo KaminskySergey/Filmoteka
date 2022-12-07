@@ -28,7 +28,7 @@ const pagination = new Pagination(container, {
       '</a>',
   },
 });
-
+// =====================
 pagination.on('beforeMove', async evt => {
   apiService.page = evt.page;
   const movies = await apiService.fetch();
