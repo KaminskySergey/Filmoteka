@@ -12,5 +12,20 @@
     --fontFamily-roboto: 'Roboto', normal;
   
     --default-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+    --backdrop-bg: rgba(0, 0, 0, 0.2);
+    --cubic-bezier: cubic-bezier(.82, .76, .4, .91);
   }
   
+
+    // :root {
+    //   --modal-bg: #fff;
+    //   --backdrop-bg: rgba(0, 0, 0, 0.2);
+    //   --fontFamily-roboto: 'Roboto', normal;
+    //   --font-black: #000000;
+    //   --font-gray: #8C8C8C;
+    //   --font-btn-watched: #FF6B01;
+    //   --font-btn-not-selected: #F7F7F7;
+    //   // --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+    //   --cubic-bezier: cubic-bezier(.82, .76, .4, .91)
+    // }
