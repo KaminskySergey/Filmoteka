@@ -1,0 +1,12 @@
+.tui-pagination .tui-page-btn.tui-first,
+.tui-pagination .tui-page-btn.tui-last {
+  background: #f7f7f7;
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  padding-top: 14px !important;
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
+}
