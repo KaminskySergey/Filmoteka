@@ -1,13 +1,13 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import updateDocInWatched from '../firebase';
-import updateDocInQueue from '../firebase';
+// import  updateDocInWatched  from '../firebase';
+// import  updateDocInQueue  from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
 const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
 let movieID = '';
-export let movieInfo = '';
+let movieInfo = '';
 let instance;
 let moviePoster;
 let movieTitle;
@@ -121,8 +121,8 @@ async function renderMarkupModal(e) {
 
   const addToWatchedBtn = document.querySelector('#add-to-watched');
   const addToQueueBtn = document.querySelector('#add-to-queue');
-  addToWatchedBtn.addEventListener('click', updateDocInWatched);
-  addToQueueBtn.addEventListener('click', updateDocInQueue);
+  // addToWatchedBtn.addEventListener('click', updateDocInWatched);
+  // addToQueueBtn.addEventListener('click',  updateDocInQueue);
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
