@@ -91,16 +91,18 @@ function createMurkupModal({
 }
 
 async function renderMarkupModal(e) {
+  if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') return;
   toggleModal();
   window.addEventListener('keydown', onEscClose);
   getRef('.modal__btn-close').addEventListener('click', closeModal);
 
   movieID = await e.target.parentElement.dataset.id;
-
+  console.log(e.target.dataset.id);
   const getAxios = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
   );
   movieInfo = getAxios.data;
+
   const markup = createMurkupModal(getAxios.data);
   getRef('.modal').insertAdjacentHTML('beforeend', markup);
 
