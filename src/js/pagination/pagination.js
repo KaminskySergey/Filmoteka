@@ -1,53 +1,47 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import ApiService from '../api';
-const container = document.getElementById('tui-pagination-container');
+import MoviesApi from '../api';
+import getMoviesInfo from '../gallery/poular_movie';
 
-const apiService = new ApiService();
-const pagination = new Pagination(container, {
-  totalItems: 1000,
-  itemsPerPage: 20,
-  visiblePages: 5,
-  page: 1,
-  centerAlign: true,
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-});
-// =====================
-pagination.on('beforeMove', async evt => {
-  apiService.page = evt.page;
-  const movies = await apiService.fetch();
-});
+const movies = new MoviesApi();
+const gallery = document.querySelector('.gallery__list');
 
-let totalItemsFromServer;
+export default function createPagination(total_results) {
+  const container = document.getElementById('tui-pagination-container');
+  let options = {
+    totalItems: total_results,
+    itemsPerPage: 20,
+    visiblePages: 5,
+    page: 1,
+    centerAlign: true,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<span class="tui-ico-ellip">...</span>' +
+        '</a>',
+    },
+  };
 
-const init = async total => {
-  if (total === undefined && !totalItemsFromServer)
-    totalItemsFromServer = await apiService.fetch();
+  const pagination = new Pagination(container, options);
 
-  if (total === undefined) total = totalItemsFromServer.total_results;
-
-  pagination.setTotalItems(total);
-  pagination.reset();
-};
-
-init();
-
-export default {
-  reset: init,
-};
+  pagination.on('afterMove', function (eventData) {
+    gallery.innerHTML = '';
+    movies.page = eventData.page;
+    movies.getPopularMovies().then(response => {
+      getMoviesInfo(response.data.results);
+    });
+  });
+}

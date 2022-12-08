@@ -4,6 +4,7 @@ import './js/fiter-button-header/filter-button-header';
 import './js/up-button/_up-button';
 
 // gallery ===========================
+import './js/pagination/load_page';
 import './js/gallery/poular_movie';
 
 // pagination=============
