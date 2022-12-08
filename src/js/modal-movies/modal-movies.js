@@ -1,12 +1,18 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
+import updateDocInWatched from '../firebase';
+import updateDocInQueue from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
 const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
 let movieID = '';
-let movieInfo = '';
+export let movieInfo = '';
 let instance;
+let moviePoster;
+let movieTitle;
+let movieGenres;
+let movieReleaseDate;
 
 getRef('.gallery__list').addEventListener('click', renderMarkupModal);
 getRef('.backdrop').addEventListener('click', onClickClose);
@@ -75,12 +81,12 @@ function createMurkupModal({
       <p class="modal__description">${overview}</p>
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn watched" data-action="watched">
+          <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched>
             add to Watched
           </button>
         </li>
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn queue" data-action="queue">add to queue</button>
+          <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">add to queue</button>
         </li>
       </ul>
           <button class="btn-play">Play</button>
@@ -97,14 +103,24 @@ async function renderMarkupModal(e) {
   getRef('.modal__btn-close').addEventListener('click', closeModal);
 
   movieID = await e.target.parentElement.dataset.id;
-  console.log(e.target.dataset.id);
+
   const getAxios = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
   );
   movieInfo = getAxios.data;
 
+  moviePoster = getAxios.data.backdrop_path;
+  movieTitle = getAxios.data.original_title;
+  movieGenres = getAxios.data.genres.map(e => e.name);
+  movieReleaseDate = getAxios.data.release_date;
+
   const markup = createMurkupModal(getAxios.data);
   getRef('.modal').insertAdjacentHTML('beforeend', markup);
+
+  const addToWatchedBtn = document.querySelector('#add-to-watched');
+  const addToQueueBtn = document.querySelector('#add-to-queue');
+  addToWatchedBtn.addEventListener('click', updateDocInWatched);
+  addToQueueBtn.addEventListener('click', updateDocInQueue);
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
