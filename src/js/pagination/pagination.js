@@ -6,6 +6,8 @@ import getMoviesInfo from '../gallery/poular_movie';
 const movies = new MoviesApi();
 const gallery = document.querySelector('.gallery__list');
 
+//////////////
+
 export default function createPagination(total_results) {
   const container = document.getElementById('tui-pagination-container');
   let options = {
