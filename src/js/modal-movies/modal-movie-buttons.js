@@ -1,5 +1,5 @@
 
-const movieInfo = {}; 
+// const movieInfo = {}; 
 const LOCALSTORAGE_WATCHED = "watched";
 const LOCALSTORAGE_QUEUE = "queue";
 
