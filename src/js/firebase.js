@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix'
+// import { Notify } from 'notiflix'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
 const galleryEl = document.querySelector('.gallery');
@@ -135,19 +135,19 @@ signOutBtn.addEventListener('click', signUserOut);
           }
         }
 
-       export async function updateDocInWatched() {
+      //  export async function updateDocInWatched() {
           
-          const ref = doc(db, "Watched", currentUser.email)
-          const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-            console.log(movieGenres);
-        }
+      //     const ref = doc(db, "Watched", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
 
-        export async function updateDocInQueue() {
+      //   export  async function updateDocInQueue() {
           
-          const ref = doc(db, "Queue", currentUser.email)
-          const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-            console.log(movieGenres);
-        }
+      //     const ref = doc(db, "Queue", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
 
 // ===================== FIRESTORE ^^ ============================
 
