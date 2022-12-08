@@ -1,5 +1,7 @@
 import { Notify } from 'notiflix'
 
+const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
+const galleryEl = document.querySelector('.gallery');
 
 const signUpModal = document.querySelector("[data-signUp-modal]")
 const openSignUpModalBtn = document.querySelector("[data-signUp-modal-open]")
@@ -333,7 +335,7 @@ for (let key in data){
   const markupEl =
     
     `<li class="gallery__item thumb" data-id="${id}">
-                <img class="gallery__img" loading="lazy" alt='${movie.title}' src= '${IMG_URL}${poster_path}' />
+                <img class="gallery__img" loading="lazy" alt='${title}' src= '${IMG_URL}${poster_path}' />
                 <p class="gallery__title">'${title}'</p>
                 <p class="gallery__genre">${genre_ids} | ${release_date.substr(0, 4)}</p>
 
