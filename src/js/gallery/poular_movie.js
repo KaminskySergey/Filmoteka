@@ -18,7 +18,7 @@ export default function getMoviesInfo(data) {
 
 function createMoviesList(movie) {
   return `
- <li class="gallery__item thumb" data-id="">
+ <li class="gallery__item thumb" data-id="${movie.id}">
  <img width="280px" height="402px" src= '${IMG_URL}${movie.poster_path}' />
  <p>'${movie.title}'</p>
  <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
