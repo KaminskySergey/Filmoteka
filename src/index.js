@@ -23,4 +23,11 @@ import './js/modal-movies/modal-movies';
 // modal feedback
 import './js/feedback-modal/_feedback-modal';
 
+<<<<<<< Updated upstream
 import './js/loading-spinner/loading-spinner';
+=======
+// loading spinner
+import './js/loading-spinner/loadinng-spinner';
+
+
+>>>>>>> Stashed changes

@@ -1,7 +1,17 @@
+<<<<<<< Updated upstream
 import axios from "axios";
 import { fetchGenres } from "../gallery/popular_movie";
 import { decodeGenres } from "../gallery/popular_movie";
 import { IMG_URL } from "../gallery/popular_movie";
+=======
+import axios from 'axios';
+import { fetchGenres } from '../gallery/poular_movie';
+import { decodeGenres } from '../gallery/poular_movie';
+import { IMG_URL } from '../gallery/poular_movie';
+import { gallery } from '../gallery/poular_movie';
+import { spinnerPlay, spinnerStop } from '../loading-spinner/loadinng-spinner';
+// import { Notify } from 'notiflix';
+>>>>>>> Stashed changes
 
 const ref = {
     searchForm: document.querySelector('.form-search'),
@@ -39,6 +49,7 @@ function makeSubmit(e) {
 }
 
 async function fetchAxios(page) {
+<<<<<<< Updated upstream
     let urlObject = await axios.get(`${BASE_URL}?${MY_KEY}&query=${inputValue}&page=${page}`);
     const data = urlObject.data;
     const dataStatus = urlObject.status;
@@ -51,6 +62,23 @@ async function fetchAxios(page) {
         // console.log(data);
         return 0
     }
+=======
+  spinnerPlay();
+  let urlObject = await axios.get(
+    `${BASE_URL}?${MY_KEY}&query=${inputValue}&page=${page}`
+  );
+  const data = urlObject.data;
+  const dataStatus = urlObject.status;
+  const dataResults = data.total_results;
+
+  if (dataStatus === 200 && dataResults > 0) {
+    spinnerStop();
+    clearOldMarkup()
+    return data;
+  } 
+  spinnerStop();
+  return 0
+>>>>>>> Stashed changes
 }
 
 async function makeMarkup(page) {
