@@ -1,7 +1,7 @@
 import axios from "axios";
-import { fetchGenres } from "../gallery/popular_movie";
-import { decodeGenres } from "../gallery/popular_movie";
-import { IMG_URL } from "../gallery/popular_movie";
+import { fetchGenres } from "../gallery/poular_movie";
+import { decodeGenres } from "../gallery/poular_movie";
+import { IMG_URL } from "../gallery/poular_movie";
 
 const ref = {
     searchForm: document.querySelector('.form-search'),
