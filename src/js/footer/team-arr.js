@@ -4,31 +4,44 @@ export const team = [
         name: "Inna",
         surname: "Isko",
         img: "/Inna.08c966ae.jpg",
+        work: "modal",
         films: 
             [
-                {1: "gbgbgbg"} ,
-                {2: "gbgbgbg"} ,
-                {3: "gbgbgbg"},
-                {1: "gbgbgbg"},
-                {1: "gbgbgbg"},
+                { name: 'Deadpool', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/38n2ZSgwzEj51zB02rNuurHZC7Z.jpg'},
+                { name: 'Harry James Potter', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/33Wj3LSyoAqtqkeh7YXcVMvTQzc.jpg'},
+                { name: 'Avengers: Endgame', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zpUZ5qT89ByIPn21px8uBU7Lgsg.jpg'},
             ]
+            
         ,
+        actors: [
+            
+            { name: 'Ryan Reynolds', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg'},
+            { name: 'Mark Wahlberg', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/bTEFpaWd7A6AZVWOqKKBWzKEUe8.jpg'},
+            { name: 'Robert Downey Jr.', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/im9SAqJPZKEbVZGmjXuLI4O7RvM.jpg'},
+            
+        ]
     },
     {
         id: 2,
         name: "Bohdan",
         surname: "Nadebernyy",
-        img: "/Bogdan.54258284.jpg",
+        img: "/src/images/team/Bogdan.jpg",
         work: "header / Scrum",
         films: 
             [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
+                { name: 'Gladiator', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1wjNqlfsuHNTXTpCt2ZOV2iPxaf.jpg'},
+                { name: 'The Fast and the Furious', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/eGdN1s6G7COuTu2rJmZQl0eU7kg.jpg'},
+                { name: 'Spider-Man', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jPZ9BY7rmuCmKKCDfHxICl19qrj.jpg'},
             ]
+            
         ,
+        actors: [
+            
+            { name: 'Will Smith', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rqqhzESgnlxREv7Q8ZtjqBZtSry.jpg'},
+            { name: 'Ryan Reynolds', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg'},
+            { name: 'Dwayne Johnson', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/cgoy7t5Ve075naBPcewZrc08qGw.jpg'},
+            
+        ],
     },  
     {
         id: 3,
@@ -38,7 +51,7 @@ export const team = [
         wokr: "pagination / language",
         films: 
             [
-                { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
+                { name: 'American History X', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2dIE1KOc7Fa3FIMzph8mBJK17KM.jpg'},
                 { name: 'Interstellar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wUmyEjrLqYpJYjVMD2YR7IffFeE.jpg'},
                 { name: 'With Pulp Fiction', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7FaHjGa4RvKJZHzY7c9UgTTH9KN.jpg'},
             ]
@@ -46,7 +59,7 @@ export const team = [
         actors: [
             
             { name: 'Helena Bonham Carter', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/DDeITcCpnBd0CkAIRPhggy9bt5.jpg'},
-            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dHvp2FafEE5OGFy9kcX2l8oMIsH.jpg'},
             { name: 'Matthew McConaughey', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rDYQP0X5XlDwxOeZdLYMbsIV7F1.jpg'},
             
         ],
@@ -60,7 +73,7 @@ export const team = [
         films: 
             [
             { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
-            { name: 'The night Watch', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dq1wUZFLFJ32iJOD9HkkA2CE91R.jpg'},
+            { name: 'Who: The Day of the Doctor', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oEFQZBwt3pDJQ2vFmai5mXqky7Y.jpg'},
             { name: 'Fight Club', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/66RvLrRJTm4J8l3uHXWF09AICol.jpg'},
             ]
         ,
@@ -80,20 +93,26 @@ export const team = [
         work: "gallery",
         films: 
             [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
+                { name: 'I Robot', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mcGZ07eyn8UERDOPvfEWE690q4l.jpg'},
+                { name: 'Men in black', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aWdS4UOb4aeoS9xZsxGHhXTA1jp.jpg'},
+                { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
             ]
         ,
+        actors: [
+            
+            { name: 'Benedict Cumberbatch', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/fBEucxECxGLKVHBznO0qHtCGiMO.jpg'},
+            { name: 'Tom Hanks', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/xndWFsBlClOJFRdhSt4NBwiPq2o.jpg'},
+            { name: 'Will Smith', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rqqhzESgnlxREv7Q8ZtjqBZtSry.jpg'},
+            
+        ],
+        
     },
     {
         id: 6,
         name: "Yurii",
-        surname: "....",
+        surname: "Dets",
         img: "/Yurik.ccd2c66b.jpg",
-        work: "",
+        work: "Queue",
         films: 
             [
             { name: 'About time', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xWk8ukJ6dhRvlrboG3qgNWNtLJ1.jpg'},
@@ -127,7 +146,7 @@ export const team = [
         actors: [
             
             { name: 'Emilia Isobel Euphemia Rose Clarke', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/zM76EBPZkdkSHyESyIUa47aP87R.jpg'},
-            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dHvp2FafEE5OGFy9kcX2l8oMIsH.jpg'},
             { name: 'Katherine Heigl', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yuU0Mgsc6qHe4mPulIA7h7cOYEr.jpg'},
             
         ],
@@ -150,7 +169,7 @@ export const team = [
             
             { name: 'Leonardo Wilhelm DiCaprio', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg'},
             { name: 'Denzel Washington', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/AHUnhGbnWnjin4M2sNdZYAei9h.jpg'},
-            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dHvp2FafEE5OGFy9kcX2l8oMIsH.jpg'},
             
         ],
     },
@@ -159,15 +178,23 @@ export const team = [
         name: "Yevhen",
         surname: "Altunin",
         img: "/Zhenya.88ea98e6.jpg",
+        work: "modal @mail",
         films: 
             [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
+                { name: 'The Great Gatsby', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWJ7cIEF8hYSjFlpkdS64s8lHb2.jpg'},
+                { name: 'The Equalizer', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hc1tXFITduL2nm5CqORSmlwAOlI.jpg'},
+                { name: 'Pirates of the Caribbean', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            
             ]
         ,
+        actors: [
+            
+            { name: 'Leonardo Wilhelm DiCaprio', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg'},
+            { name: 'Denzel Washington', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/AHUnhGbnWnjin4M2sNdZYAei9h.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dHvp2FafEE5OGFy9kcX2l8oMIsH.jpg'},
+            
+        ],
+        
     },
     {
         id: 10,
@@ -177,34 +204,46 @@ export const team = [
         work: "filter by genre",
         films: 
             [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
+                { name: 'Harry Potter and the Deathly Hallows: Part II', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cSxvq15AOeJ2jNdVRXJvAoZU8T6.jpg'},
+                { name: 'Harry Potter and the Deathly Hallows: Part I', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nUJc0DOO0lh8pjLkmMtPObA2NKf.jpg'},
+                { name: 'Harry Potter and the Half-Blood Prince', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zhMOIXezutmTCeP1AvPZHakGCYs.jpg'},
             ]
-        ,
+                
+            ,
+        actors: [
+            
+            { name: 'Dwayne Johnson', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/cgoy7t5Ve075naBPcewZrc08qGw.jpg'},
+            { name: 'Daniel Radcliffe', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lLFs80wuxxHd1cmFz470hRDZBHj.jpg'},
+            { name: 'Vin Diesel', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/7rwSXluNWZAluYMOEWBxkPmckES.jpg'},
+            
+        ],
     },
     {
         id: 11,
         name: "Anton",
         surname: "Kovsh",
         img: "/Anton.fe432208.jpg",
+        work: "chat",
         films: 
-            [
-                "" ,
-                "" ,
-                "",
-                "",
-                "",
-            ]
+        [
+            { name: '', imgUrl: ''},
+            { name: '', imgUrl: ''},
+            { name: '', imgUrl: ''},
+        ]
         ,
+        actors: [
+            
+            
+            
+        ]
+        
     },
     {
         id: 12,
         name: "Vlad",
         surname: "Bodnar",
         img: "/src/images/team/VladBodnar.jpg",
+        work: "spinner",
         films: 
         [
             { name: 'Matrix', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6nd3J3eCozReal6In5Dy18xDdmA.jpg'},
@@ -236,7 +275,7 @@ export const team = [
         ,
         actors: [
             
-            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7x6Fm7w2KQNyLw5DM1dTD7aoqTM.jpg'},
+            { name: 'Johnny Depp', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/dHvp2FafEE5OGFy9kcX2l8oMIsH.jpg'},
             { name: 'Will Smith', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rqqhzESgnlxREv7Q8ZtjqBZtSry.jpg'},
             { name: 'Tom Cruise', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg'},
             
