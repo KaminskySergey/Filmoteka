@@ -24,3 +24,9 @@ body.show-modal .backdrop{
     visibility: visible;
     opacity: 1;
 }
+
+body.show-modal-team .backdrop-team{
+    pointer-events: initial;
+    visibility: visible;
+    opacity: 1;
+}
