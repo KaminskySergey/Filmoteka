@@ -3,12 +3,13 @@ import { fetchGenres } from '../gallery/poular_movie';
 import { decodeGenres } from '../gallery/poular_movie';
 import { IMG_URL } from '../gallery/poular_movie';
 import { gallery } from '../gallery/poular_movie';
-import { Notify } from 'notiflix';
+// import { Notify } from 'notiflix';
 
 const ref = {
   searchForm: document.querySelector('.form-search'),
   searchInput: document.querySelector('.form-search__input'),
   searchButton: document.querySelector('.form-search__submit'),
+  searchWarning: document.querySelector('.form-search__warning')
 };
 
 let page = 1;
@@ -28,11 +29,16 @@ function makeSubmit(e) {
   inputValue = e.target[0].value.trim();
 
   if (inputValue === '') {
-    Notify.failure("Please input text ;)")
+    ref.searchWarning.textContent = "Please input text ;)"
+
+    e.target[0].value = "";
+    // Notify.failure("Please input text ;)")
     return
   } 
   
   makeMarkup(page);
+
+  e.target[0].value = "";
 }
 
 async function fetchAxios(page) {
@@ -60,6 +66,7 @@ async function makeMarkup(page) {
 
 function createMarkupList(data) {
   if (data !== 0) {
+    ref.searchWarning.textContent = "";
     const markup = data.results
       .map(movie => {
         // console.log(movie)
@@ -75,7 +82,8 @@ function createMarkupList(data) {
     // console.log(markup);
     return markup;
   } else {
-    Notify.failure('Oops, film not found') 
+    ref.searchWarning.textContent = "Ooops, film not found";
+    // Notify.failure('Oops, film not found') 
   }
 }
 
