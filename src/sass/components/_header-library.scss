@@ -212,6 +212,7 @@
 border: 1px solid #FFFFFF;
 border-radius: 5px;
 &:focus,
+<<<<<<< Updated upstream
 &:hover {
   color: var(--bgc-footer-arrow);
   background-color: var(--bgc-btn);
@@ -227,4 +228,14 @@ border-radius: 5px;
     
 // }
 
+=======
+  &:hover {
+    color: var(--bgc-footer-arrow);
+    background-color: var(--bgc-btn);
+    border-color: var(--bgc-btn);
+    box-shadow: 0 0 10px 0 var(--bgc-btn) inset,
+      0 0 10px 4px var(--color-category);
+  }
+}
+>>>>>>> Stashed changes
 
