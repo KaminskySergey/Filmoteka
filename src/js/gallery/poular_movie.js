@@ -48,3 +48,5 @@ function decodeGenres([...args]) {
 
   return genres.join(', ');
 }
+
+export { fetchGenres, decodeGenres, IMG_URL };
