@@ -70,4 +70,4 @@ function decodeGenres([...args]) {
     return genres.join(", ");
 }
 
-export { fetchGenres, decodeGenres, IMG_URL };
+export { fetchGenres, decodeGenres, IMG_URL, createMoviesList, gallery};
