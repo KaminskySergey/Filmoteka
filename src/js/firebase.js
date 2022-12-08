@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
+const galleryEl = document.querySelector('.gallery');
 
 const signUpModal = document.querySelector("[data-signUp-modal]")
 const openSignUpModalBtn = document.querySelector("[data-signUp-modal-open]")
