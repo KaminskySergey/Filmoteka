@@ -5,7 +5,7 @@ const footer = document.querySelector('footer')
 
 const teamList = document.querySelector('.footer-team__list')
 
-let topFilm 
+
 
 const modalTeam = document.querySelector('.modal-team')
 // console.log(teamItem);
@@ -29,16 +29,21 @@ team.map((el) => {
         modalTeam.insertAdjacentHTML('afterbegin', markup)
         
         const topFilm = document.querySelector('.top-films__list')
+
+        const topActor = document.querySelector('.top-actor__list')
         
-        console.log(el.films[0].name);
+        
         
         el.films.map((film) => {
-            console.log(film);
+            fnClickTop()
             const mark = topFilms(film)
-            console.log(mark);
             topFilm.insertAdjacentHTML('afterbegin', mark)
         })
-            
+        el.actors.map((actor) => {
+            fnClickTop()
+            const markupActor = topActors(actor);
+            topActor.insertAdjacentHTML('afterbegin', markupActor)
+        })
             
         
         
@@ -50,8 +55,41 @@ team.map((el) => {
 }
 
 
+//   click  "top" =================
+function fnClickTop(){
+    const pTopFilmsEl = document.querySelector('.modal-films__click-js');
+    const pTopActorEl = document.querySelector('.modal-actors__click-js')
+    
+    pTopFilmsEl.addEventListener('click', onClickTopFilms)
+    pTopActorEl.addEventListener('click', onClickTopActors)
+}
+
+
+
+function onClickTopFilms(){
+    const topFilmEl = document.querySelector('.top-films__list')
+    console.log(topFilmEl);
+    topFilmEl.classList.toggle('is-hidden')
+    
+}
+
+function onClickTopActors(){
+    const topActorEl = document.querySelector('.top-actor__list')
+    console.log(topActorEl);
+    topActorEl.classList.toggle('is-hidden')
+    
+}
+
+
 function topFilms(el){
 return `
+<li class="top-films__item">
+<img class="top-films__img" src="${el.imgUrl}" alt="${el.name}">
+</li>`
+}
+
+function topActors(el){
+    return `
 <li class="top-films__item">
 <img class="top-films__img" src="${el.imgUrl}" alt="${el.name}">
 </li>`
@@ -67,15 +105,16 @@ function markupOne(el){
 <div class="modal-team__cont--top">
 
 <div>
-<p class="modal__films--top">Top-5 Films:</p>
-    <ul class="top-films__list">
+<div class="modal-team__film">
+<button class="modal__films--top modal-films__click-js" type="button">Top Films:</button>
+    <ul class="top-films__list is-hidden">
         
     </ul>
 </div>
 
-<div>
-<p class="modal__actor--top">Top-5 Actors:</p>
-    <ul class="top-actor__list">
+<div class="modal-team__actor">
+<button class="modal__actor--top modal-actors__click-js" type="button">Top Actors:</button>
+    <ul class="top-actor__list is-hidden">
         <li><img href="${el.actors}"></li>
     </ul>
 </div>
