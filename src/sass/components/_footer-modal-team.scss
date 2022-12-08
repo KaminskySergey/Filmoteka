@@ -13,13 +13,11 @@
     
     
 .modal-team{
-    display: flex;
-    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 85%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     background:linear-gradient((30deg, rgba(164, 33, 33, 1), #0000) 45.71%), 
     linear-gradient(31deg, rgba(32, 31, 31, 1), #0f00 100.71%),
      linear-gradient(214deg, #abb81fcc, rgba(0, 0, 0, 1) 70.71%);
@@ -31,15 +29,14 @@
     padding: 10px 20px;
     
     
-    
     @media screen and (min-width:768px){
-        width: 570px;
-        height: 410px;
+        width: 560px;
+        height: 300px;
     }
 
     @media screen and (min-width:1280px){
         width: 700px;
-        height: 410px;
+        height: 370px;
         
     }
 
@@ -50,80 +47,42 @@
 
   }
 .modal-team__btn{
-    
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    stroke: red;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--default-transition); 
+display: flex;
+justify-content: center;
+align-items: center; 
 &:hover, &:focus{
     transform: scale(1.2);
-    background-color: #000000;
 }
-    }
-.modal-team__btn{
-    position: fixed;
-    bottom: 25%;
-    right: 50%;
-    width: 100px;
-    height: 50px;
 }
 
 
 .modal-team__container{
-    
-    @media screen and (max-width:767px){
-        display: contents;
-    }
-    @media screen and (min-width:768px){
-        display: flex;
-    }
+    display: flex;
 }
-
-
 
 .modal-team__img{
-    @media screen and (max-width:767px){
-    display: none;
-    }
-    @media screen and (min-width:768px){
-        height: 90%;
-    /* align-content: center; */
-    display: flex;
-    align-items: center;
-    width: auto;
-    }
-    @media screen and (min-width:1280px){
-    
+    width: 250px;
     border-radius: 60px;
-    
-    }
-    
-    
+    background:  linear-gradient(35deg, red, green);
 }
-
 
 .modal-team__img img{
     height: 300px;
     width: 250px;
     border-radius: 30px;
-    @media screen and (min-width:768px){
-        width: 230px;
-        height: 230px;
-    }
-    @media screen and (min-width:1280px){
-        height: 300px;
-        width: 240px;
-    }
-}
-
-.modal-team__film{
-    @media screen and (max-width:767px){
-        margin-bottom: 20px
-    }
-
-    margin-bottom: 10px
+    
 }
 
 .modal-team__cont--top{
-    @media screen and (max-width:767px){
-        margin-left: 0;
-    }
     display: flex;
     flex-direction: column;
     margin-left: 20px;
@@ -154,35 +113,13 @@
 
 .modal__films--top , .modal__actor--top{
     margin-bottom: 5px;
-    color: white;
-    text-decoration: underline;
-    font-style: italic;
-    transition: var(--default-transition);
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    &:hover{
-        color: yellow;
-    }
 }
 
-.top-films__list , .top-actor__list{
-    @media screen and (max-width: 767px){
-        display: flex;
-        justify-content: center;
-    }
+.top-films__list{
     display: flex;
-    transition: var(--default-transition);
-}
-
-.top-actor__list.is-hidden, .top-films__list.is-hidden{
-    transform: translateX(100%)
+    margin-bottom: 10px;
 }
 
 .top-films__item + .top-films__item{
-    margin-left: 10px;
-}
-
-.top-actor__list + .top-actor__list{
     margin-left: 10px;
 }

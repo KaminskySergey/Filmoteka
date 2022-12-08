@@ -1,7 +1,7 @@
 import axios from "axios";
-import { fetchGenres } from "../gallery/popular_movie";
-import { decodeGenres } from "../gallery/popular_movie";
-import { IMG_URL } from "../gallery/popular_movie";
+import { fetchGenres } from "../gallery/poular_movie";
+import { decodeGenres } from "../gallery/poular_movie";
+import { IMG_URL } from "../gallery/poular_movie";
 
 const ref = {
     searchForm: document.querySelector('.form-search'),
@@ -9,7 +9,6 @@ const ref = {
     searchButton: document.querySelector('.form-search__submit'),
 }
 
-let genreArray = [];
 let page = 1;
 let inputValue = "";
 const BASE_URL = "https://api.themoviedb.org/3/search/movie";
@@ -44,7 +43,7 @@ async function fetchAxios(page) {
     const dataStatus = urlObject.status;
     const dataResults = data.results;
 
-    if (dataStatus === 200 && dataResults.length > 0) {
+    if (dataStatus === 200 && dataResults.length >= 0) {
         // console.log(data);
         return data;
     } else {
@@ -56,8 +55,7 @@ async function fetchAxios(page) {
 async function makeMarkup(page) {
     const data = await fetchAxios(page);
     const total = await createMarkupList(data);
-
-
+    
 }
 
 function createMarkupList(data) {
@@ -72,9 +70,11 @@ function createMarkupList(data) {
             </li> 
               `
         }).join('');
+        console.log(markup)
         return markup
     }
     else {
         console.log('bad')
     }
 }
+

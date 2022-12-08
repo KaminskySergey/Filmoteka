@@ -18,19 +18,15 @@ async function getMovies() {
 }
 
 async function getMoviesInfo() {
-
-    const movies = await getMovies();
-    // console.log(movies)
-    // const markup = "";
-    movies.results.forEach((movie) => {
-        // console.log(movie);
-        const markup = createMoviesList(movie);
-        gallery.insertAdjacentHTML('beforeend', markup);
-    })
-
-};
-
-
+  const movies = await getMovies();
+  // console.log(movies);
+  // const markup = "";
+  movies.results.forEach(movie => {
+    // console.log(movie);
+    const markup = createMoviesList(movie);
+    gallery.insertAdjacentHTML('beforeend', markup);
+  });
+}
 
 getMoviesInfo();
 
@@ -44,30 +40,30 @@ function createMoviesList(movie) {
    `;
 }
 async function fetchGenres() {
-
-    const response = await axios.get(GENRES_URL, {
-        params: {
-            api_key: API_KEY,
-        }
-    }
-    )
-    const { genres } = response.data;
-    genreArray = genres;
-    // console.log(genreArray);
-    return;
+  const response = await axios.get(GENRES_URL, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  const { genres } = response.data;
+  genreArray = genres;
+  // console.log(genreArray);
+  return;
 }
 
 function decodeGenres([...args]) {
-    const genres = [];
-    args.map((id) => genreArray.find((el) => {
-        if (el.id === id) {
-            genres.push(el.name);
-        }
-    }))
+  const genres = [];
+  args.map(id =>
+    genreArray.find(el => {
+      if (el.id === id) {
+        genres.push(el.name);
+      }
+    })
+  );
 
-    // console.log(args);
-    // console.log(genres);
-    return genres.join(", ");
+  // console.log(args);
+  // console.log(genres);
+  return genres.join(', ');
 }
 
 export { fetchGenres, decodeGenres, IMG_URL };
