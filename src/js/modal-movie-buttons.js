@@ -1,8 +1,12 @@
+
+const movieInfo = {}; 
 const LOCALSTORAGE_WATCHED = "watched";
 const LOCALSTORAGE_QUEUE = "queue";
 
 let watchedMovies = [];
 let queueOfMovies = [];
+
+const movieInJSON = JSON.stringify(movieInfo);
 
 // watchedMovies.push(localStorage.getItem(LOCALSTORAGE_WATCHED));
 // queueOfMovies.push(localStorage.getItem(LOCALSTORAGE_QUEUE));
@@ -24,15 +28,16 @@ if (queueIsNotEmpty){
     addToQueueBtn.textContent = "remove from queue";
 };
 
-function addToWatched () {
+function addToWatched() {
+    
     if (addToWatchedBtn.textContent === "add to Watched") {
-        watchedMovies.push("movie-object-in-JSON");
+        watchedMovies.push(movieInJSON);
         localStorage.setItem(LOCALSTORAGE_WATCHED, watchedMovies);
         addToWatchedBtn.textContent = "remove from Watched";
         return;
     };
  
-    removeFromWatched("movie-object-in-JSON");
+    removeFromWatched(movieInJSON);
     addToWatchedBtn.textContent = "add to Watched";
 
 }
@@ -49,13 +54,13 @@ function removeFromWatched (movie) {
 
 function addToQueue () {
     if (addToQueueBtn.textContent === "add to queue") {
-        queueOfMovies.push("movie-object-in-JSON");
+        queueOfMovies.push(movieInJSON);
         localStorage.setItem(LOCALSTORAGE_QUEUE, queueOfMovies);
         addToQueueBtn.textContent = "remove from queue";
         return;
     };
  
-    removeFromQueue("movie-object-in-JSON");
+    removeFromQueue(movieInJSON);
     addToQueueBtn.textContent = "add to queue";
 };
 
