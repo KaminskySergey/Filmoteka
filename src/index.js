@@ -18,3 +18,6 @@ import './js/footer/footer-modal-team';
 // modal movies ==============================
 import './js/modal-movies/modal-movies';
 
+// feedback modal
+import './js/feedback-modal/_feedback-modal';
+
