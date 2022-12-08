@@ -1,5 +1,5 @@
 
-// const movieInfo = {}; 
+import { movieInfo } from "./modal-movies";
 const LOCALSTORAGE_WATCHED = "watched";
 const LOCALSTORAGE_QUEUE = "queue";
 
@@ -74,3 +74,4 @@ function removeFromQueue (movie) {
     localStorage.setItem(LOCALSTORAGE_QUEUE, queueOfMovies);
 }
 
+export { watchedMovies, queueOfMovies };
