@@ -2,9 +2,11 @@
 import './js/header/header';
 import './js/fiter-button-header/filter-button-header';
 import './js/up-button/_up-button';
-import './js/firebase'
+import './js/firebase';
 
 // gallery ===========================
+import './js/pagination/load_page';
+
 import './js/gallery/poular_movie';
 
 // pagination=============
@@ -17,4 +19,3 @@ import './js/footer/footer-modal-team';
 
 // modal movies ==============================
 import './js/modal-movies/modal-movies';
-
