@@ -1,4 +1,4 @@
-import {Spinner} from 'spin.js';
+// import {Spinner} from 'spin.js';
 // const spiderSpinner = document.querySelector('.header__thumb');
 const opts = {
   lines: 13, // The number of lines to draw
