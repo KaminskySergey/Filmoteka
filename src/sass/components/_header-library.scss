@@ -211,6 +211,16 @@
    @include media-min(768px) {width: 150px;}
 border: 1px solid #FFFFFF;
 border-radius: 5px;
+
+&:focus,
+
+&:hover {
+  color: var(--bgc-footer-arrow);
+  background-color: var(--bgc-btn);
+  border-color: var(--bgc-btn);
+  box-shadow: 0 0 10px 0 var(--bgc-btn) inset,
+    0 0 10px 4px var(--color-category);
+
 }
 
 .is-active {
@@ -257,6 +267,16 @@ border-radius: 5px;
 
 //     }
 
+
+  &:hover {
+    color: var(--bgc-footer-arrow);
+    background-color: var(--bgc-btn);
+    border-color: var(--bgc-btn);
+    box-shadow: 0 0 10px 0 var(--bgc-btn) inset,
+      0 0 10px 4px var(--color-category);
+  }
+}
+
 //     &__submit {
 //         position: absolute;
 //         top: 0;
@@ -266,6 +286,7 @@ border-radius: 5px;
 //         height: 100%;
 //         cursor: pointer;
 //     }
+
 
 //     &__icon {
 //         stroke: var(--color-text);
