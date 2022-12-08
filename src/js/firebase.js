@@ -85,7 +85,7 @@ const navLoggedIn = document.querySelector('.nav-list-logged-in')
 // // Initialize Cloud Firestore and get a reference to the service
 // const db = getFirestore(app);
 // console.log(db);
-// // import { collection, addDoc } from "firebase/firestore";
+// // import { collection, addDoc } from "firebase/firestore"; 
 // console.log(collection);
 // try {
 //   const docRef = await addDoc(collection(db, "users"), {
@@ -161,8 +161,6 @@ const navLoggedIn = document.querySelector('.nav-list-logged-in')
 //     console.log();
 //     return details;
 // }
-
-const x = "hello";
 
 // fetchDetails(104);
 
@@ -365,8 +363,6 @@ const firebaseConfig = {
   appId: "1:1008932581270:web:6d27972f39650ac22cf7b7"
 };
 
-
-
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, getDocs } from 'firebase/firestore/lite';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";      
@@ -378,6 +374,9 @@ const auth = getAuth(app);
 const signUpBtn = document.querySelector('#signUp');
 const signInBtn = document.querySelector('#signIn');
 const signOutBtn = document.querySelector('#signOut');
+
+console.log(signInBtn)
+
 
 const nickName = document.querySelector('#displayName');
 const email = document.querySelector('#email');
