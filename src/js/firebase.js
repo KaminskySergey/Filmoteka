@@ -375,7 +375,6 @@ const signUpBtn = document.querySelector('#signUp');
 const signInBtn = document.querySelector('#signIn');
 const signOutBtn = document.querySelector('#signOut');
 
-console.log(signInBtn)
 
 
 const nickName = document.querySelector('#displayName');

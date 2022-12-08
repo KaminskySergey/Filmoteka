@@ -2,6 +2,8 @@ import axios from 'axios';
 import { fetchGenres } from '../gallery/poular_movie';
 import { decodeGenres } from '../gallery/poular_movie';
 import { IMG_URL } from '../gallery/poular_movie';
+import { gallery } from '../gallery/poular_movie';
+import { Notify } from 'notiflix';
 
 const ref = {
   searchForm: document.querySelector('.form-search'),
@@ -26,11 +28,11 @@ function makeSubmit(e) {
   inputValue = e.target[0].value.trim();
 
   if (inputValue === '') {
-    return;
-  } else {
-    makeMarkup(page);
-  }
-  // console.log(inputValue)
+    Notify.failure("Please input text ;)")
+    return
+  } 
+  
+  makeMarkup(page);
 }
 
 async function fetchAxios(page) {
@@ -39,20 +41,21 @@ async function fetchAxios(page) {
   );
   const data = urlObject.data;
   const dataStatus = urlObject.status;
-  const dataResults = data.results;
+  const dataResults = data.total_results;
 
-  if (dataStatus === 200 && dataResults.length >= 0) {
-    // console.log(data);
+  if (dataStatus === 200 && dataResults > 0) {
+
+    clearOldMarkup()
     return data;
-  } else {
-    // console.log(data);
-    return 0;
-  }
+  } 
+  
+  return 0
 }
 
 async function makeMarkup(page) {
   const data = await fetchAxios(page);
   const total = await createMarkupList(data);
+  const render = await renderMarkup(total);
 }
 
 function createMarkupList(data) {
@@ -61,21 +64,25 @@ function createMarkupList(data) {
       .map(movie => {
         // console.log(movie)
         return `
-            <li class="" data-id="">
-                <img width="280px" height="402px" src= '${IMG_URL}${
-          movie.poster_path
-        }' />
+        <li class="gallery__item thumb" data-id="${movie.id}">
+                <img loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
                 <p>'${movie.title}'</p>
-                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${
-          movie.release_date
-        }'</p>
+                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
             </li>
               `;
       })
       .join('');
-    console.log(markup);
+    // console.log(markup);
     return markup;
   } else {
-    console.log('bad');
+    Notify.failure('Oops, film not found') 
   }
+}
+
+function clearOldMarkup() {
+  gallery.innerHTML="";
+}
+
+function renderMarkup(markup) {
+  gallery.insertAdjacentHTML('beforeend', markup);
 }

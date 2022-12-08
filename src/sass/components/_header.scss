@@ -407,7 +407,7 @@
     }
 
     @include media-min (768px) {
-        justify-content: space-evenly;
+        min-width: 200px;
     }
 }
 
