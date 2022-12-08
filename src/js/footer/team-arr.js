@@ -3,7 +3,7 @@ export const team = [
         id: 1,
         name: "Inna",
         surname: "Isko",
-        img: "/Inna.08c966ae.jpg",
+        img: "https://i.ibb.co/SJYk1Yk/Inna.jpg",
         work: "modal",
         films: 
             [
@@ -25,7 +25,7 @@ export const team = [
         id: 2,
         name: "Bohdan",
         surname: "Nadebernyy",
-        img: "/src/images/team/Bogdan.jpg",
+        img: "https://i.ibb.co/J3Lg2gx/Bogdan.jpg",
         work: "header / Scrum",
         films: 
             [
@@ -47,7 +47,7 @@ export const team = [
         id: 3,
         name: "Oksana",
         surname: "Mashtaler",
-        img: "/Oksana.84ef82e6.jpg",
+        img: "https://i.ibb.co/Pm1zR1v/Oksana.jpg",
         wokr: "pagination / language",
         films: 
             [
@@ -68,7 +68,7 @@ export const team = [
         id: 4,
         name: "Maks",
         surname: "Budiukin",
-        img: "/Maks.661c2508.jpg",
+        img: "https://i.ibb.co/9TSX7NM/Maks.jpg",
         wokr: "firebase",
         films: 
             [
@@ -89,7 +89,7 @@ export const team = [
         id: 5,
         name: "Olena",
         surname: "Pastushenko",
-        img: "/Olena.4b435dbf.jpg",
+        img: "https://i.ibb.co/PGLd5Ln/Olena.jpg",
         work: "gallery",
         films: 
             [
@@ -111,7 +111,7 @@ export const team = [
         id: 6,
         name: "Yurii",
         surname: "Dets",
-        img: "/Yurik.ccd2c66b.jpg",
+        img: "https://i.ibb.co/yBsH7B9/Yurik.jpg",
         work: "Queue",
         films: 
             [
@@ -133,7 +133,7 @@ export const team = [
         id: 7,
         name: "Anastasiia",
         surname: "Boroday",
-        img: "/Anastasya.cae8ad5a.jpg",
+        img: "https://i.ibb.co/0nLShr2/Anastasya.jpg",
         work: "modal card",
         films: 
             [
@@ -155,7 +155,7 @@ export const team = [
         id: 8,         
         name: "Ruslan",
         surname: "Samigulin",
-        img: "/Ruslan.033fe336.jpg",
+        img: "https://i.ibb.co/vjt0M77/Ruslan.jpg",
         work: "render card",
         films: 
             [
@@ -177,7 +177,7 @@ export const team = [
         id: 9,
         name: "Yevhen",
         surname: "Altunin",
-        img: "/Zhenya.88ea98e6.jpg",
+        img: "https://i.ibb.co/5TByCGD/Zhenya.jpg",
         work: "modal @mail",
         films: 
             [
@@ -200,7 +200,7 @@ export const team = [
         id: 10,
         name: "Vladislav",
         surname: "Lisovyi",
-        img: "/Vlad.a47781ee.jpg",
+        img: "https://i.ibb.co/Rvj5g0z/Vlad.jpg",
         work: "filter by genre",
         films: 
             [
@@ -222,7 +222,7 @@ export const team = [
         id: 11,
         name: "Anton",
         surname: "Kovsh",
-        img: "/Anton.fe432208.jpg",
+        img: "https://i.ibb.co/tH1pQWL/Anton.jpg",
         work: "chat",
         films: 
         [
@@ -242,7 +242,7 @@ export const team = [
         id: 12,
         name: "Vlad",
         surname: "Bodnar",
-        img: "/src/images/team/VladBodnar.jpg",
+        img: "https://i.ibb.co/KGm7vLB/Vlad-Bodnar.jpg",
         work: "spinner",
         films: 
         [
@@ -264,7 +264,7 @@ export const team = [
         id: 13,
         name: "Serhii",
         surname: "Kaminskyi",
-        img: "/Serhii.f93cdbe1.jpg",
+        img: "https://i.ibb.co/mHTb7ZB/Serhii.jpg",
         work: "footer / Team Lead",
         films: 
             [
