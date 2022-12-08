@@ -22,3 +22,5 @@ import './js/modal-movies/modal-movies';
 
 // modal feedback
 import './js/feedback-modal/_feedback-modal';
+
+import './js/loading-spinner/loading-spinner';
