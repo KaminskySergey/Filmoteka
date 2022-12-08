@@ -6,13 +6,15 @@ const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
 let movieID = '';
 let movieInfo = '';
+let instance;
 
 getRef('.gallery__list').addEventListener('click', renderMarkupModal);
+getRef('.backdrop').addEventListener('click', onClickClose);
 
 function toggleModal() {
   getRef('.backdrop').classList.toggle('is-hidden');
 }
-
+//===============створення та рендер модалки==================
 function createMurkupModal({
   poster_path,
   original_title,
@@ -73,12 +75,12 @@ function createMurkupModal({
       <p class="modal__description">${overview}</p>
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn watched">
+          <button type="button" class="modal__btn watched" data-action="watched">
             add to Watched
           </button>
         </li>
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn queue">add to queue</button>
+          <button type="button" class="modal__btn queue" data-action="queue">add to queue</button>
         </li>
       </ul>
           <button class="btn-play">Play</button>
@@ -90,6 +92,8 @@ function createMurkupModal({
 
 async function renderMarkupModal(e) {
   toggleModal();
+  window.addEventListener('keydown', onEscClose);
+  getRef('.modal__btn-close').addEventListener('click', closeModal);
 
   movieID = await e.target.parentElement.dataset.id;
 
@@ -102,20 +106,53 @@ async function renderMarkupModal(e) {
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
-
+//===============трейлер============================
 async function getTrailer() {
   let idYoutub = '';
   const getAxios = axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${API_KEY}&language=en-US`
   );
-  await getAxios.then(resp => {
-    idYoutub = resp.data.results[0].key;
-    console.log(idYoutub);
-  });
+  await getAxios
+    .then(resp => {
+      idYoutub = resp.data.results[0].key;
+      instance = basicLightbox.create(
+        `
+    <iframe class="trailerPlayer" src="https://www.youtube.com/embed/${idYoutub}" width="1200" height="700" frameborder="0"></iframe>
+   `
+      );
 
-  const instance = basicLightbox.create(`
-    <iframe class="trailerPlayer" src="https://www.youtube.com/embed/${idYoutub}" width="500" height="300" frameborder="0"></iframe>
-`);
+      instance.show();
+    })
+    .catch(error => {
+      getRef('.btn-play').setAttribute('disabled', 'disabled');
+      getRef('.btn-play').textContent = 'trailer is missing';
+    });
+}
+//==============очищення та закриття модалки================
+function clearMarcupModal() {
+  getRef('.modal-container').remove();
+}
 
-  instance.show();
+function closeModal() {
+  clearMarcupModal();
+  toggleModal();
+  window.removeEventListener('keydown', onEscClose);
+}
+
+function onEscClose(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+    const visible = instance.visible();
+    if (visible) {
+      instance.close();
+    }
+  }
+}
+
+function onClickClose(e) {
+  const targetValue = e.target.classList.value;
+  const classBackdrop = 'backdrop';
+  if (targetValue === classBackdrop) {
+    closeModal();
+  }
 }
