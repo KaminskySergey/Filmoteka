@@ -18,7 +18,7 @@ export const team = [
         id: 2,
         name: "Bohdan",
         surname: "Nadebernyy",
-        img: "/Bogdan.54258284.jpg",
+        img: "/src/images/team/Bogdan.jpg",
         work: "header / Scrum",
         films: 
             [
