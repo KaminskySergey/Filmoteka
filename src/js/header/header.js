@@ -71,10 +71,11 @@ function createMarkupList(data) {
       .map(movie => {
         // console.log(movie)
         return `
-        <li class="gallery__item thumb" data-id="${movie.id}">
-                <img loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
-                <p>'${movie.title}'</p>
-                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
+               <li class="gallery__item thumb" data-id="${movie.id}">
+                <img class="gallery__img" loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
+                <p class="gallery__title">'${movie.title}'</p>
+                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+
             </li>
               `;
       })
