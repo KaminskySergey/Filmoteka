@@ -14,7 +14,7 @@ let inputValue = '';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const MY_KEY = 'api_key=102d4305e0abdbf0fd48836d5abb1978';
 
-// fetchGenres();
+fetchGenres();
 
 if (!!ref.searchForm) {
   ref.searchForm.addEventListener('submit', makeSubmit);
@@ -69,7 +69,7 @@ function createMarkupList(data) {
                 <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${
           movie.release_date
         }'</p>
-            </li> 
+            </li>
               `;
       })
       .join('');
