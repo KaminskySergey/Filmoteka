@@ -1,16 +1,29 @@
-#pagination {
-  margin: 0;
-
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+#tui-pagination-container {
   height: 40px;
-  width: 1280px;
+  padding-bottom: 60px !important;
+  text-align: center;
+  align-items: center;
 
-  color: #000000;
+  @media screen and (max-width: 767px) {
+    min-width: 320px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding-top: 40px !important;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    min-width: 768px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-width: 1280px;
+  }
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.333 !important;
+  color: #000000;
 }
 
 .tui-pagination .tui-page-btn {
@@ -20,7 +33,11 @@
   border-radius: 5px !important;
   width: 38px !important;
   height: 38px !important;
-  padding-top: 13px !important;
+
+  @media screen and (max-width: 767px) {
+    width: 40px !important;
+    height: 40px !important;
+  }
 
   &:hover,
   &:focus {
@@ -53,7 +70,10 @@
 
 .tui-pagination .tui-page-btn.tui-prev,
 .tui-pagination .tui-page-btn.tui-next {
-  display: none;
+  @media screen and (max-width: 767px) {
+    display: none;
+    text-align: center;
+  }
 
   background: #f7f7f7;
   padding: 15px 15px !important;
@@ -68,6 +88,10 @@
 .tui-pagination .tui-page-btn.tui-next-is-ellip {
   display: none;
   padding: 4px 12px !important;
+
+  @media screen and (max-width: 767px) {
+    display: inline-block;
+  }
 
   &:hover,
   &:focus {

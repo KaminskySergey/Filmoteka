@@ -240,6 +240,19 @@
         width: 12px;
         height: 12px;
     }
+
+    &__warning {
+        font-weight: 500;
+        font-style: italic;
+        position: absolute;
+        top: 40;
+        right: 0;
+        font-size: 14px;
+        width: 100%;
+        background-color: transparent;
+        color: var(--color-underline);
+        text-align: center;
+    }
 }
 
 //  Авторизація
@@ -351,7 +364,7 @@
 
   #hello {
     position: absolute;
-    top: 60px;
+    top: 65px;
     left: 80px;
     // text-align: right;
     font-style: italic;
