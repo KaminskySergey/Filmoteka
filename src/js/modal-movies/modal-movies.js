@@ -7,7 +7,7 @@ const getRef = selector => document.querySelector(selector);
 const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
 let movieID = '';
-export let movieInfo = '';
+let movieInfo = '';
 let instance;
 let moviePoster;
 let movieTitle;
