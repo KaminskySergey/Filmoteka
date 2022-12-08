@@ -1,4 +1,4 @@
-import getMoviesInfo from '../gallery/poular_movie';
+import getMoviesInfo from '../gallery/popular_movie';
 import MoviesApi from '../api';
 import createPagination from '../pagination/pagination';
 

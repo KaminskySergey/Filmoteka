@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import MoviesApi from '../api';
-import getMoviesInfo from '../gallery/poular_movie';
+import getMoviesInfo from '../gallery/popular_movie';
 
 const movies = new MoviesApi();
 const gallery = document.querySelector('.gallery__list');
