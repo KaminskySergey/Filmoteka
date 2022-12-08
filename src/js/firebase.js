@@ -1,6 +1,6 @@
 // import { Notify } from 'notiflix'
 
-import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from '../js/modal-movies/modal-movies'
+import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from './js/modal-movies/modal-movies'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
 const galleryEl = document.querySelector('.gallery');
