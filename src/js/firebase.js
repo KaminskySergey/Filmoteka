@@ -1,3 +1,5 @@
+import { Notify } from 'notiflix'
+
 
 const signUpModal = document.querySelector("[data-signUp-modal]")
 const openSignUpModalBtn = document.querySelector("[data-signUp-modal-open]")
@@ -330,13 +332,13 @@ for (let key in data){
 
   const markupEl =
     
-    `<li class="gallery__item" id="${id}">
-            <div class="gallery__thumb">
-                <img src="${IMG_URL}${poster_path}" alt="" class="gallery__picture">
-            </div>
-            <h2 class="gallery__title">${title}</h2>
-            <p class="gallery__info">${genre_ids} | ${release_date.substr(0, 4)}</p>
-        </li>`
+    `<li class="gallery__item thumb" data-id="${id}">
+                <img class="gallery__img" loading="lazy" alt='${movie.title}' src= '${IMG_URL}${poster_path}' />
+                <p class="gallery__title">'${title}'</p>
+                <p class="gallery__genre">${genre_ids} | ${release_date.substr(0, 4)}</p>
+
+            </li>
+   `
     
     markup.push(markupEl);
     console.log(release_date)
