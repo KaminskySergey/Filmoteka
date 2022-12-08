@@ -162,6 +162,8 @@ const navLoggedIn = document.querySelector('.nav-list-logged-in')
 //     return details;
 // }
 
+const x = "hello";
+
 // fetchDetails(104);
 
 // function renderModalMarkup(details) {
