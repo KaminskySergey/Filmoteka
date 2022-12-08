@@ -6,31 +6,22 @@ const backdropTeam = document.querySelector('.backdrop-team')
 
 const teamCloseModal = document.querySelector('.modal-team__btn')
 
-const footerModal = document.querySelector('.footer-modal')
-console.log(footerModal);
-
-const body = document.querySelector('body')
-console.log(body);
-
 teamOpenModal.addEventListener('click', onTeamModalBtn)
 
 teamCloseModal.addEventListener('click', onTeamModalClose)
 
 backdropTeam.addEventListener('click', onTeamModalBackdrop)
 
-
 function onTeamModalBtn(evt){
     if(!evt.target.closest('li')){
         return;
     }
     document.body.classList.add('show-modal-team')
-    window.addEventListener('keydown', onCloseEscapeTeam)
-    
+    window.addEventListener('keydown', onCloseTeamEscape)
 }
 
 function onTeamModalClose(){
     document.body.classList.remove('show-modal-team')
-    window.removeEventListener('keydown', onCloseEscapeTeam)
 }
 
 function onTeamModalBackdrop(evt){
@@ -39,9 +30,9 @@ function onTeamModalBackdrop(evt){
     }
 }
 
-function onCloseEscapeTeam(evt){
-    console.log(evt);
-    if(evt.code === `Escape`){
-        onTeamModalClose()
+function onCloseTeamEscape(evt){
+    if(evt.code === 'Escape'){
+        document.body.classList.remove('show-modal-team')
+        window.removeEventListener('keydown', onCloseTeamEscape)
     }
 }

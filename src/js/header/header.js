@@ -1,80 +1,97 @@
-import axios from "axios";
-import { fetchGenres } from "../gallery/popular_movie";
-import { decodeGenres } from "../gallery/popular_movie";
-import { IMG_URL } from "../gallery/popular_movie";
+import axios from 'axios';
+import { fetchGenres } from '../gallery/poular_movie';
+import { decodeGenres } from '../gallery/poular_movie';
+import { IMG_URL } from '../gallery/poular_movie';
+import { gallery } from '../gallery/poular_movie';
+// import { Notify } from 'notiflix';
 
 const ref = {
-    searchForm: document.querySelector('.form-search'),
-    searchInput: document.querySelector('.form-search__input'),
-    searchButton: document.querySelector('.form-search__submit'),
-}
+  searchForm: document.querySelector('.form-search'),
+  searchInput: document.querySelector('.form-search__input'),
+  searchButton: document.querySelector('.form-search__submit'),
+  searchWarning: document.querySelector('.form-search__warning')
+};
 
-let genreArray = [];
 let page = 1;
-let inputValue = "";
-const BASE_URL = "https://api.themoviedb.org/3/search/movie";
-const MY_KEY = "api_key=102d4305e0abdbf0fd48836d5abb1978"
+let inputValue = '';
+const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
+const MY_KEY = 'api_key=102d4305e0abdbf0fd48836d5abb1978';
 
-fetchGenres()
+fetchGenres();
 
 if (!!ref.searchForm) {
-    
-    ref.searchForm.addEventListener("submit", makeSubmit)
+  ref.searchForm.addEventListener('submit', makeSubmit);
 }
 
 function makeSubmit(e) {
-    e.preventDefault(); 
-    
-    inputValue = e.target[0].value.trim()
+  e.preventDefault();
 
-    if (inputValue === "") { 
-        
-        return
-    } else {
-        
-        makeMarkup(page)
-    }
-    // console.log(inputValue)
-    
+  inputValue = e.target[0].value.trim();
+
+  if (inputValue === '') {
+    ref.searchWarning.textContent = "Please input text ;)"
+
+    e.target[0].value = "";
+    // Notify.failure("Please input text ;)")
+    return
+  } 
+  
+  makeMarkup(page);
+
+  e.target[0].value = "";
 }
 
 async function fetchAxios(page) {
-    let urlObject = await axios.get(`${BASE_URL}?${MY_KEY}&query=${inputValue}&page=${page}`);
-    const data = urlObject.data;
-    const dataStatus = urlObject.status;
-    const dataResults = data.results;
+  let urlObject = await axios.get(
+    `${BASE_URL}?${MY_KEY}&query=${inputValue}&page=${page}`
+  );
+  const data = urlObject.data;
+  const dataStatus = urlObject.status;
+  const dataResults = data.total_results;
 
-    if (dataStatus === 200 && dataResults.length > 0) {
-        // console.log(data);
-        return data;
-    } else {
-        // console.log(data);
-        return 0
-    }
+  if (dataStatus === 200 && dataResults > 0) {
+
+    clearOldMarkup()
+    return data;
+  } 
+  
+  return 0
 }
 
 async function makeMarkup(page) {
-    const data = await fetchAxios(page);
-    const total = await createMarkupList(data);
-
-
+  const data = await fetchAxios(page);
+  const total = await createMarkupList(data);
+  const render = await renderMarkup(total);
 }
 
 function createMarkupList(data) {
-    if (data !== 0) {
-        const markup = data.results.map((movie)=>{
-            // console.log(movie)
-            return `
-            <li class="" data-id="">
-                <img width="280px" height="402px" src= '${IMG_URL}${movie.poster_path}' />
-                <p>'${movie.title}'</p>
-                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
-            </li> 
-              `
-        }).join('');
-        return markup
-    }
-    else {
-        console.log('bad')
-    }
+  if (data !== 0) {
+    ref.searchWarning.textContent = "";
+    const markup = data.results
+      .map(movie => {
+        // console.log(movie)
+        return `
+               <li class="gallery__item thumb" data-id="${movie.id}">
+                <img class="gallery__img" loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
+                <p class="gallery__title">'${movie.title}'</p>
+                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+
+            </li>
+              `;
+      })
+      .join('');
+    // console.log(markup);
+    return markup;
+  } else {
+    ref.searchWarning.textContent = "Ooops, film not found";
+    // Notify.failure('Oops, film not found') 
+  }
+}
+
+function clearOldMarkup() {
+  gallery.innerHTML="";
+}
+
+function renderMarkup(markup) {
+  gallery.insertAdjacentHTML('beforeend', markup);
 }

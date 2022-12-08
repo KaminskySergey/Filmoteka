@@ -8,7 +8,7 @@ $desktop: 1024px;
   height: 100%;
   width: 100%;
   background-color: var(--backdrop-bg);
-  z-index: 2;
+  z-index: 1;
   transition: opacity 500ms var(--cubic-bezier),
     visibility 500ms var(--cubic-bezier);
 
@@ -19,9 +19,6 @@ $desktop: 1024px;
   }
 }
 
-// .modal-render{
-  
-// }
 .modal {
   position: absolute;
   left: 50%;
@@ -77,8 +74,8 @@ $desktop: 1024px;
 
 .modal-icon {
   stroke: var(--color-title);
-  width: 14px;
-  height: 14px;
+  width: 30px;
+  height: 30px;
 
   &:focus,
   &:hover {
@@ -236,10 +233,9 @@ $desktop: 1024px;
 
 // // -----------------btn-----------------------------
 .modal__btn-list {
-  margin-bottom: 20px;
-
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 
   @media screen and (min-width: $desktop) {
     justify-content: flex-start;
@@ -289,11 +285,8 @@ $desktop: 1024px;
       0 0 10px 4px var(--color-category);
   }
 }
-
-.modal_btn-play {
-  left: 210px;
-  bottom: 117px;
-
+// // -----------------btn modal-----------------------------
+.btn-play {
   width: 240px;
   height: 44px;
   cursor: pointer;
@@ -306,22 +299,24 @@ $desktop: 1024px;
   background-color: var(--color-title);
 
   transition: border 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74),
-    opacity 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74),
+    border 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74),
     scale 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74);
 
-  &:hover {
+  @media screen and (min-width: $tablet) {
+    width: 273px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 287px;
+  }
+
+  &:hover,
+  &:focus {
     border: none;
     scale: 1.1;
     box-shadow: 0 1.5em 1.5em -0.4em var(--color-genre);
+    transition: border 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74),
+      border 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74),
+      scale 1500ms cubic-bezier(0.21, 0.42, 0.78, 0.74);
   }
-
-    @media screen and (min-width: $tablet) {
-      width: 265px;
-    }
-  
-    @media screen and (min-width: $desktop) {
-      width: 287px;
-
-      }
 }
-

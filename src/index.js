@@ -1,13 +1,13 @@
 // header ========================
 import './js/header/header';
 import './js/fiter-button-header/filter-button-header';
-import './js/up-button/_up-button';
+// import './js/up-button/_up-button';
+import './js/firebase';
 
 // gallery ===========================
-import './js/gallery/popular_movie'
+import './js/pagination/load_page';
 
-
-
+import './js/gallery/poular_movie';
 
 // pagination=============
 import './js/pagination/pagination';
@@ -19,8 +19,10 @@ import './js/footer/footer-modal-team';
 
 // modal movies ==============================
 import './js/modal-movies/modal-movies';
+import './js/modal-movies/modal-movie-buttons';
 
-// modal feedback
+
+// feedback modal
 import './js/feedback-modal/_feedback-modal';
 
-import './js/loading-spinner/loading-spinner';
+

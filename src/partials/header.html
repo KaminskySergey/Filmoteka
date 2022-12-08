@@ -11,12 +11,48 @@
                     </h2>
                 </a>
             </div>
-            <div class="header__nav">
-                <ul class="navigation">
-                    <li class="navigation__list navigation__list-active"><a class="navigation__link" href="/src/index.html">home</a></li>
-                    <li class="navigation__list"><a class="navigation__link" href="/src/my-library.html">my library</a></li>
+            <nav class="nav">
+                <ul class="nav-list nav-list-logged-out">
+                    <li class="nav-list__item"><a href="./index.html" class="nav-list__link navigation__list-active">HOME</a></li>
+                    <li class="nav-list__item"><button type="button" class="auth-button" data-signUp-modal-open>SIGN UP</button></li>
+                    <li class="nav-list__item"><button type="button" class="auth-button" data-signIn-modal-open>SIGN IN</button></li>
                 </ul>
-            </div>
+                <ul class="nav-list nav-list-logged-in visually-hidden">
+                    <li class="nav-list__item"><a href="./index.html" class="nav-list__link navigation__list-active">HOME</a></li>
+                    <li class="nav-list__item"><a href="/src/my-library.html" class="nav-list__link">MY LIBRARY</a></li>
+                    <li class="nav-list__item"><button type="button" class="auth-button" id="signOut">SIGN OUT</button></li>
+                </ul>
+                <div class="sign-up-modal visually-hidden" data-signUp-modal>
+                    <div class="sign-input-section">
+                    <button type="button" class="sign-close-button" data-signUp-modal-close>
+                        <svg width="18" height="18">
+                        <use href="/src/images/sprite.svg#icon-close-modal"></use>
+                        </svg>
+                    </button>
+                    <div class="sign-input-placeholder" id="name-placeholder"><label for="displayName" class="sign-input-label">NAME</label><input type="text" name="displayName" id="displayName" class="sign-input"></div>
+                    <div class="sign-input-placeholder"><label for="email" class="sign-input-label">EMAIL</label><input type="email"  id="email" class="sign-input"></div>
+                    <div class="sign-input-placeholder"><label for="password" class="sign-input-label">PASSWORD</label><input type="password" id="password" class="sign-input"></div>
+                    <p class="sign-up-warning"></p>
+                    <button id="signUp" class="sign-button">SIGN UP</button>
+                    </div>
+                </div>
+                <div class="sign-up-modal visually-hidden" data-signIn-modal>
+                    <div class="sign-input-section">
+                    <button type="button" class="sign-close-button" data-signIn-modal-close>
+                        <svg width="18" height="18">
+                        <use href="/src/images/sprite.svg#icon-close-modal"></use>
+                        </svg>
+                    </button>
+                    <div class="sign-input-placeholder"><label for="email" class="sign-input-label">EMAIL</label><input type="email"
+                        id="sign-in-email" class="sign-input"></div>
+                    <div class="sign-input-placeholder"><label for="password" class="sign-input-label">PASSWORD</label><input
+                        type="password" id="sign-in-password" class="sign-input"></div>
+                    <p class="sign-in-warning"></p>
+                    <button id="signIn" class="sign-button">SIGN IN</button>
+                    </div>
+                </div>
+                <p id="hello" class="curr"></p>
+            </nav>
         </div>
         <div class="header__form">
             <form class="form-search">
@@ -26,7 +62,34 @@
                         <use href="/src/images/sprite.svg#icon-search"></use>
                     </svg>
                 </button>
+                <p class="form-search__warning "></p>
             </form>
         </div>
+        <div class="header__btn visually-hidden">
+            <ul class="header-my_library-btn visually-hidden">
+                <li class="my_library-btn_list ">
+                  <button class="my_library-btn_watched  is-active">watched</button>
+                </li>
+                <li class="my_library-btn_list ">
+                  <button class="my_library-btn_queue ">queue</button>
+                </li>
+            </ul> 
+        </div>
     </div>
+
+    <ul class="header-my_library-btn visually-hidden">
+        <li class="my_library-btn_list ">
+            <button class="my_library-btn_watched  is-active">watched</button>
+        </li>
+        <li class="my_library-btn_list ">
+            <button class="my_library-btn_queue ">queue</button>
+        </li>
+    </ul>
 </header>
+
+<!-- <button type="button" class="header__button--small">SIGN IN</button>
+    <button type="button" class="header__button--small">SIGN UP</button> -->
+  <!-- HELLO USER! -->
+
+</header>
+
