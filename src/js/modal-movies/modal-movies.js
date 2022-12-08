@@ -81,9 +81,11 @@ function createMurkupModal({
       <p class="modal__description">${overview}</p>
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
+
           <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched>
             add to Watched
           </button>
+
         </li>
         <li class="modal__btn-item">
           <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">add to queue</button>
@@ -174,3 +176,5 @@ function onClickClose(e) {
     closeModal();
   }
 }
+
+export { movieInfo };

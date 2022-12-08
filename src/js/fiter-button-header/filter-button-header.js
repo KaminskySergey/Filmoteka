@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { createMoviesList } from '../gallery/poular_movie';
+import { gallery } from '../gallery/poular_movie';
 // оглошую змінні
 let genreId = 18;
 // оголошую констани
@@ -35,7 +36,7 @@ async function selectFilm(genreId) {
 
 
     if (dataStatus === 200 && dataResults.length > 0) {
-        console.log(data);
+        // console.log(data);
         return data;
     } else {
         return 0
@@ -49,18 +50,24 @@ function findIdGenres(nameGenres) {
     return selectedGenres.id;
 }
 // функція події для рендеру розмітки
-function selectGenerButton(event) {
+async function selectGenerButton(event) {
     if (event.target.nodeName !== "BUTTON") {
         return;
     }
    
     const nameGenres = event.target.textContent;
+    // gallery.innerHTML = '';
+    genreId = findIdGenres(nameGenres);
     
-    genreId =
-    findIdGenres(nameGenres);
-    selectFilm(genreId);
-    
+    const movies = await selectFilm(genreId);
+    // console.log(movies)
+    gallery.innerHTML = '';
+    movies.results.forEach((movie) => {
+        // console.log(movie);
+        const markup = createMoviesList(movie);
+         
+        gallery.insertAdjacentHTML('beforeend', markup);
+    })
 }
-
 
 refs.filterList.addEventListener("click", selectGenerButton);

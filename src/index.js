@@ -1,7 +1,7 @@
 // header ========================
 import './js/header/header';
 import './js/fiter-button-header/filter-button-header';
-import './js/up-button/_up-button';
+// import './js/up-button/_up-button';
 import './js/firebase';
 
 // gallery ===========================
@@ -19,6 +19,7 @@ import './js/footer/footer-modal-team';
 
 // modal movies ==============================
 import './js/modal-movies/modal-movies';
+import './js/modal-movies/modal-movie-buttons';
 
 
 // feedback modal
