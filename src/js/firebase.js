@@ -85,7 +85,7 @@ const navLoggedIn = document.querySelector('.nav-list-logged-in')
 // // Initialize Cloud Firestore and get a reference to the service
 // const db = getFirestore(app);
 // console.log(db);
-// // import { collection, addDoc } from "firebase/firestore"; 
+// // import { collection, addDoc } from "firebase/firestore";
 // console.log(collection);
 // try {
 //   const docRef = await addDoc(collection(db, "users"), {
