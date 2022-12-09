@@ -4,8 +4,8 @@
   border-radius: 50%;
   fill: var(--bgc-btn);
   position: fixed;
-  top: 770px;
-  left: 15px;
+  top: 85%;
+  left: 5%;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -14,20 +14,20 @@
   animation: myAnim 3s linear 0s infinite reverse forwards;
 
   @media screen and (min-width: 480px) {
-    left: 20px;
-    top: 750px;
+    left: 5%;
+    top: 85%;
     width: 70px;
     height: 70px;
   }
   @media screen and (min-width: 768px) {
-    left: 20px;
-    top: 750px;
+    left: 5%;
+    top: 85%;
     width: 70px;
     height: 70px;
   }
   @media screen and (min-width: 1280px) {
-    left: 50px;
-    top: 750px;
+    left: 5%;
+    top: 85%;
     width: 70px;
     height: 70px;
   }
