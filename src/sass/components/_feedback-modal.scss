@@ -63,6 +63,7 @@ $desktop: 1024px;
     border-color: transparent;
 
     transition: box-shadow var(--default-transition);
+    cursor: pointer;
 
     &:hover,
     &:focus {
@@ -111,6 +112,7 @@ $desktop: 1024px;
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+
 
     @media screen and (min-width: 480px) {
         font-size: 16px;
@@ -182,6 +184,7 @@ $desktop: 1024px;
 
     background-color: var(--bgc);
     color: var(--color-title);
+    cursor: pointer;
     
     transition: background-color var(--default-transition), 
         color var(--default-transition), 
