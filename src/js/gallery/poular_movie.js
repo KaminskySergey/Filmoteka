@@ -21,15 +21,11 @@ function createMoviesList(movie) {
                 <img class="gallery__img" loading="lazy" alt='${
                   movie.title
 
-                }' src= '${IMG_URL}${movie.poster_path}' />
+                }' src= '${IMG_URL}${movie.poster_path}'/>
+                <p class="gallery__title">${movie.title}</p>
+                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+                </li>`;
 
-                <p class="gallery__title">'${movie.title}'</p>
-                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${
-    movie.release_date
-  }</p>
-
-            </li>
-   `;
 }
 async function fetchGenres() {
   const response = await axios.get(GENRES_URL, {
@@ -39,7 +35,6 @@ async function fetchGenres() {
   });
   const { genres } = response.data;
   genreArray = genres;
-  console.log(genreArray);
   return;
 }
 function decodeGenres([...args]) {

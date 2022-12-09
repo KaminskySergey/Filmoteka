@@ -124,8 +124,12 @@ align-items: center;
     @media screen and (max-width:767px){
         margin-bottom: 20px
     }
-    
+    overflow: hidden;
     margin-bottom: 10px
+}
+
+.modal-team__actor{
+    overflow: hidden;
 }
 
 .modal-team__cont--top{
@@ -170,15 +174,28 @@ align-items: center;
         color: yellow;
     }
 }
-
+// animation //
+@keyframes transformList{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+///
+/// 
 .top-films__list , .top-actor__list{
     @media screen and (max-width: 767px){
         display: flex;
         justify-content: center;
     }
     display: flex;
-    margin-bottom: 10px;
     transition: var(--default-transition);
+    animation-name: transformList;
+    animation-duration: 1500ms;
+    animation-delay: 1000ms;
+    animation-fill-mode:backwards;
 }
 
 .top-actor__list.is-hidden, .top-films__list.is-hidden{

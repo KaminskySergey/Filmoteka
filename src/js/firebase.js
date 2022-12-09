@@ -256,7 +256,6 @@ auth.onAuthStateChanged((user)=>{
     if(user){
         // alert("Active user " + email);
       currentUser = user;
-      console.log(currentUser)
       userName.textContent = `Welcome, ${currentUser.displayName}!`;
      
       
