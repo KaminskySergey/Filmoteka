@@ -1,5 +1,7 @@
+import throttle from 'lodash.throttle';
+
 const refs = {
-    openFeedbackModalBtn: document.querySelector('[data-action="open-feedback-modal"]'),
+    openFeedbackModalBtn: document.querySelector('.contact-us__icon'),
     closeFeedbackModalBtn: document.querySelector('[data-action="close-feedback-modal"]'),
     feedbackBackdrop: document.querySelector('.js-feedback-backdrop'),
     feedbackForm: document.querySelector('.feedback-form'),
@@ -16,16 +18,16 @@ const feedbackFormData = {};
 
 refs.openFeedbackModalBtn.addEventListener('click', onFeedbackModalOpen);
 
-populateFeedbackForm();
+
 
 function onFeedbackModalOpen() {
     refs.feedbackBackdrop.classList.remove("is-hidden");
-    populateFeedbackForm()
     refs.closeFeedbackModalBtn.addEventListener('click', onFeedbackModalClose)
     document.addEventListener('keyup', onEscKeyPress);
     refs.feedbackBackdrop.addEventListener('click', onFeedbackBackdropClick)
     refs.feedbackForm.addEventListener('submit', onFeedbackFormSubmit);
-    refs.feedbackForm.addEventListener('input', onFeedbackFormInput);
+    refs.feedbackForm.addEventListener('input', throttle(onFeedbackFormInput, 500));
+    populateFeedbackForm()
 }
 
 
