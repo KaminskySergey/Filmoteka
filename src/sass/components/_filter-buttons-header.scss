@@ -17,17 +17,24 @@ select {
 
 .new-select {
     position: relative;
-    border: 2px solid #860B1B;
     background-color: #182025;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     color: #f5f4fa;
     padding: 10px 15px;
     cursor: pointer;
     user-select: none;
-    transition: var(--default-transition);
+    transition: var(--default-transition),
+    scale var(--default-transition);
     animation-name: newSelect;
     animation-duration: 2300ms;
     animation-delay: 700ms;
     animation-fill-mode: backwards;
+
+    &:hover {
+        scale: 1.05;
+    }
+
 }
 
 @keyframes newSelect{
