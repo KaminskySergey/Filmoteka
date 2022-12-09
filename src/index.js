@@ -1,7 +1,7 @@
 // header ========================
 import './js/header/header';
 import './js/fiter-button-header/filter-button-header';
-// import './js/up-button/_up-button';
+import './js/up-button/_up-button';
 import './js/firebase';
 
 // gallery ===========================
