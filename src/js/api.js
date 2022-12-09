@@ -21,6 +21,18 @@ export default class MoviesApi {
       console.error(error);
     }
   }
+  
+  async getSearchMovies() {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}?${API_KEY}&query=${this.inputValue}&page=${this.page}`
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+}
+
 
   async getSearchMovies() {
     try {

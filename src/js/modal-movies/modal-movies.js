@@ -1,21 +1,23 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import updateDocInWatched from '../firebase';
-import updateDocInQueue from '../firebase';
+
+import { updateDocW, updateDocQ } from '../../js/firebase';
+// import errorImg from '../images/modal-plug';
+// // import  updateDocInQueue  from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
 const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 
-let movieID = '';
-export let movieInfo = '';
+export let movieID = '';
+let movieInfo = '';
 let instance;
-let moviePoster;
-let movieTitle;
-let movieGenres;
-let movieReleaseDate;
+
+export let moviePoster;
+export let movieTitle;
+export let movieGenres;
+export let movieReleaseDate;
 
 getRef('.gallery__list').addEventListener('click', renderMarkupModal);
-getRef('.backdrop').addEventListener('click', onClickClose);
 
 function toggleModal() {
   getRef('.backdrop').classList.toggle('is-hidden');
@@ -29,7 +31,14 @@ function createMurkupModal({
   popularity,
   genres,
   overview,
+  release_date,
+  id,
 }) {
+  moviePoster = poster_path;
+  movieTitle = original_title;
+  movieGenres = genres;
+  movieReleaseDate = release_date;
+  movieID = id;
   const genresEl = genres.map(el => {
     return el.name;
   });
@@ -39,6 +48,7 @@ function createMurkupModal({
       class="modal__img"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
       alt="Cover of the film ${original_title}"
+      onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
     />
     <div class="modal-container-columns">
       <p class="modal__name">${original_title}</p>
@@ -82,7 +92,9 @@ function createMurkupModal({
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
 
-          <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched>
+
+          <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched">
+
             add to Watched
           </button>
 
@@ -101,6 +113,8 @@ function createMurkupModal({
 async function renderMarkupModal(e) {
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') return;
   toggleModal();
+
+  getRef('.backdrop').addEventListener('click', onClickClose);
   window.addEventListener('keydown', onEscClose);
   getRef('.modal__btn-close').addEventListener('click', closeModal);
 
@@ -109,20 +123,20 @@ async function renderMarkupModal(e) {
   const getAxios = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
   );
-  movieInfo = getAxios.data;
+  // .catch(error => `<img class="modal__img" src="../images/modal-plug" />`);
 
-  moviePoster = getAxios.data.backdrop_path;
-  movieTitle = getAxios.data.original_title;
-  movieGenres = getAxios.data.genres.map(e => e.name);
-  movieReleaseDate = getAxios.data.release_date;
+  movieInfo = getAxios.data;
 
   const markup = createMurkupModal(getAxios.data);
   getRef('.modal').insertAdjacentHTML('beforeend', markup);
 
   const addToWatchedBtn = document.querySelector('#add-to-watched');
   const addToQueueBtn = document.querySelector('#add-to-queue');
-  addToWatchedBtn.addEventListener('click', updateDocInWatched);
-  addToQueueBtn.addEventListener('click', updateDocInQueue);
+
+  // console.log(addToWatchedBtn);
+  // console.log(addToQueueBtn);
+  addToWatchedBtn.addEventListener('click', updateDocW);
+  addToQueueBtn.addEventListener('click', updateDocQ);
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
@@ -157,15 +171,12 @@ function closeModal() {
   clearMarcupModal();
   toggleModal();
   window.removeEventListener('keydown', onEscClose);
+  getRef('.backdrop').removeEventListener('click', onClickClose);
 }
 
 function onEscClose(event) {
   if (event.key === 'Escape') {
     closeModal();
-    const visible = instance.visible();
-    if (visible) {
-      instance.close();
-    }
   }
 }
 

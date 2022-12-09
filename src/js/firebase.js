@@ -1,7 +1,9 @@
-import { Notify } from 'notiflix'
+// import { Notify } from 'notiflix'
+
+import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from '../js/modal-movies/modal-movies'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
-const galleryEl = document.querySelector('.gallery');
+const galleryEl = document.querySelector('.gallery__list');
 
 const signUpModal = document.querySelector("[data-signUp-modal]")
 const openSignUpModalBtn = document.querySelector("[data-signUp-modal-open]")
@@ -135,19 +137,44 @@ signOutBtn.addEventListener('click', signUserOut);
           }
         }
 
-       export async function updateDocInWatched() {
+
+       
+      export let updateDocW;
+export let updateDocQ;
+      updateDocW = async function updateDocInWatched() {
+
           
           const ref = doc(db, "Watched", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             console.log(movieGenres);
-        }
-
-        export async function updateDocInQueue() {
+}
+        
+      updateDocQ = async function updateDocInQueue() {
           
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             console.log(movieGenres);
         }
+      
+
+      //  export async function updateDocInWatched() {
+          
+      //     const ref = doc(db, "Watched", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
+
+
+       
+
+     
+
+          
+      //     const ref = doc(db, "Queue", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
+
 
 // ===================== FIRESTORE ^^ ============================
 
@@ -279,7 +306,7 @@ async function showQueueResult() {
         const data = await getDocumentQueue();
         const resultEl = await renderLibraryMarkup(data);
         
-        galleryEl.innerHTML = resultEl;
+        galleryEl.insertAdjacentHTMLresultEl;
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
@@ -319,7 +346,7 @@ async function getDocumentQueue() {
         
 function renderLibraryMarkup(data) {
 
-const markup = [];   
+const markupArr = [];   
 for (let key in data){
     const id = data[key].id;
     const release_date = data[key].date;
@@ -341,11 +368,11 @@ for (let key in data){
 
             </li>
    `
-    
-    markup.push(markupEl);
+    console.log(markupEl)
+    markupArr.push(markupEl);
     console.log(release_date)
 }
-    
+  const markup = markupArr.join("");
     return markup;
 }
 
