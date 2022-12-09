@@ -14,6 +14,9 @@ import './js/pagination/paginatin_search';
 import './js/pagination/pagination_genres';
 import './js/pagination/pagination';
 
+// feedback modal
+import './js/feedback-modal/_feedback-modal';
+
 // footer ==============================
 import './js/footer/footer-modal';
 import './js/footer/modal-team';
@@ -27,5 +30,3 @@ import './js/modal-movies/modal-movie-buttons';
 // import './js/modal-movies/modal-movie-buttons';
 
 
-// feedback modal
-import './js/feedback-modal/_feedback-modal';
