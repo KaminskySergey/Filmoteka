@@ -17,7 +17,7 @@ function onTeamModalBtn(evt){
         return;
     }
     document.body.classList.add('show-modal-team')
-    
+    window.addEventListener('keydown', onCloseTeamEscape)
 }
 
 function onTeamModalClose(){
@@ -27,5 +27,12 @@ function onTeamModalClose(){
 function onTeamModalBackdrop(evt){
     if(evt.target === evt.currentTarget){
         document.body.classList.remove('show-modal-team')
+    }
+}
+
+function onCloseTeamEscape(evt){
+    if(evt.code === 'Escape'){
+        document.body.classList.remove('show-modal-team')
+        window.removeEventListener('keydown', onCloseTeamEscape)
     }
 }

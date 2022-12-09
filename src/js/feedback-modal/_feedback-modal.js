@@ -1,5 +1,7 @@
+import throttle from 'lodash.throttle';
+
 const refs = {
-    openFeedbackModalBtn: document.querySelector('[data-action="open-feedback-modal"]'),
+    openFeedbackModalBtn: document.querySelector('.contact-us__icon'),
     closeFeedbackModalBtn: document.querySelector('[data-action="close-feedback-modal"]'),
     feedbackBackdrop: document.querySelector('.js-feedback-backdrop'),
     feedbackForm: document.querySelector('.feedback-form'),
@@ -10,12 +12,13 @@ const refs = {
 }
 
 const STORAGE_KEY = 'feedback-form-state';
+
 const feedbackFormData = {};
 
 
 refs.openFeedbackModalBtn.addEventListener('click', onFeedbackModalOpen);
 
-populateFeedbackForm();
+
 
 function onFeedbackModalOpen() {
     refs.feedbackBackdrop.classList.remove("is-hidden");
@@ -23,7 +26,8 @@ function onFeedbackModalOpen() {
     document.addEventListener('keyup', onEscKeyPress);
     refs.feedbackBackdrop.addEventListener('click', onFeedbackBackdropClick)
     refs.feedbackForm.addEventListener('submit', onFeedbackFormSubmit);
-    refs.feedbackForm.addEventListener('input', onFeedbackFormInput);
+    refs.feedbackForm.addEventListener('input', throttle(onFeedbackFormInput, 500));
+    populateFeedbackForm()
 }
 
 
@@ -55,16 +59,15 @@ function onFeedbackFormSubmit(event) {
     
     onFeedbackModalClose()
     localStorage.removeItem(STORAGE_KEY);
-    console.log(feedbackFormData)
+
 
 }
 
 function onFeedbackFormInput(event) {
-    if (event.target.value.trim() === "") {
-        event.currentTarget.reset();
-    return
-  }
-    
+    if (refs.formFieldName.value.trim() === '' && refs.formFieldEmail.value.trim() === '' && refs.formFieldEmail.value.trim() === '') {
+        event.currentTarget.reset()
+    }
+   
     feedbackFormData[event.target.name] = event.target.value;
     
     const feedbackFormDataJSON = JSON.stringify(feedbackFormData);
@@ -76,9 +79,20 @@ function populateFeedbackForm() {
     const savedFeedbackFormData = JSON.parse(savedFeedbackFormDataJSON);
 
     if (savedFeedbackFormDataJSON) {
-        refs.formFieldName.value = savedFeedbackFormData.userName;
-        refs.formFieldEmail.value = savedFeedbackFormData.userEmail;
-        refs.formFieldMessage.value = savedFeedbackFormData.userMessage;
+        if (savedFeedbackFormData.name) {
+            refs.formFieldName.value = savedFeedbackFormData.name;
+        }
+        if (savedFeedbackFormData.email) {
+            refs.formFieldEmail.value = savedFeedbackFormData.email;
+        }
+        if (savedFeedbackFormData.message) {
+            refs.formFieldMessage.value = savedFeedbackFormData.message;
+        }
     }
-}
+
+    
+} 
+
+    
+
 

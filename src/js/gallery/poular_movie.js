@@ -9,7 +9,6 @@ fetchGenres();
 
 export default function getMoviesInfo(data) {
   const movies = data;
-
   movies.forEach(movie => {
     const markup = createMoviesList(movie);
     gallery.insertAdjacentHTML('beforeend', markup);
@@ -18,12 +17,17 @@ export default function getMoviesInfo(data) {
 
 function createMoviesList(movie) {
   return `
- <li class="gallery__item thumb" data-id="${movie.id}">
- <img loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
- <p>'${movie.title}'</p>
- <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
-  </li>
-   `;
+        <li class="gallery__item thumb" data-id="${movie.id}">
+                <img class="gallery__img" loading="lazy" alt='${
+                  movie.title
+
+                }' src= '${IMG_URL}${movie.poster_path}'/>
+                <div class="gallery__info">
+                  <p class="gallery__title">${movie.title}</p>
+                  <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+                </div>
+                </li>`;
+
 }
 async function fetchGenres() {
   const response = await axios.get(GENRES_URL, {
@@ -33,7 +37,6 @@ async function fetchGenres() {
   });
   const { genres } = response.data;
   genreArray = genres;
-  console.log(genreArray);
   return;
 }
 function decodeGenres([...args]) {
@@ -49,4 +52,4 @@ function decodeGenres([...args]) {
   return genres.join(', ');
 }
 
-export { fetchGenres, decodeGenres, IMG_URL, gallery};
+export { fetchGenres, decodeGenres, IMG_URL, gallery, createMoviesList };

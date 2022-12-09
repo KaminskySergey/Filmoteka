@@ -5,6 +5,12 @@ const backdrop = document.querySelector('.footer-backdrop')
 
 const btnClose = document.querySelector('.footer-modal__close')
 
+const footerModal = document.querySelector('.footer-modal')
+
+
+const body = document.querySelector('body')
+
+
 
 btnOpen.addEventListener('click', onOpenModal)
 
@@ -29,7 +35,9 @@ function onClickBackdrop(evt){
 }
 
 function onCloseEscape(evt){
-    console.log(evt);
+    if(body.classList.contains('show-modal-team')){
+        return
+    }
     if(evt.code === `Escape`){
         onCloseModal()
     }

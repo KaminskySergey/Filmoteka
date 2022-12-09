@@ -3,12 +3,14 @@ import { fetchGenres } from '../gallery/poular_movie';
 import { decodeGenres } from '../gallery/poular_movie';
 import { IMG_URL } from '../gallery/poular_movie';
 import { gallery } from '../gallery/poular_movie';
-import { Notify } from 'notiflix';
+import createPagination from '../pagination/paginatin_search';
+// import { Notify } from 'notiflix';
 
 const ref = {
   searchForm: document.querySelector('.form-search'),
   searchInput: document.querySelector('.form-search__input'),
   searchButton: document.querySelector('.form-search__submit'),
+  searchWarning: document.querySelector('.form-search__warning'),
 };
 
 let page = 1;
@@ -28,11 +30,16 @@ function makeSubmit(e) {
   inputValue = e.target[0].value.trim();
 
   if (inputValue === '') {
-    Notify.failure("Please input text ;)")
-    return
-  } 
-  
+    ref.searchWarning.textContent = 'Please input text ;)';
+
+    e.target[0].value = '';
+    // Notify.failure("Please input text ;)")
+    return;
+  }
+
   makeMarkup(page);
+
+  e.target[0].value = '';
 }
 
 async function fetchAxios(page) {
@@ -44,12 +51,12 @@ async function fetchAxios(page) {
   const dataResults = data.total_results;
 
   if (dataStatus === 200 && dataResults > 0) {
-
-    clearOldMarkup()
+    clearOldMarkup();
+    createPagination(dataResults, inputValue);
     return data;
-  } 
-  
-  return 0
+  }
+
+  return 0;
 }
 
 async function makeMarkup(page) {
@@ -58,29 +65,38 @@ async function makeMarkup(page) {
   const render = await renderMarkup(total);
 }
 
-function createMarkupList(data) {
+export default function createMarkupList(data) {
+  console.log(data);
   if (data !== 0) {
+    ref.searchWarning.textContent = '';
     const markup = data.results
       .map(movie => {
-        // console.log(movie)
+        // console.log(movie);
         return `
-        <li class="gallery__item thumb" data-id="${movie.id}">
-                <img loading="lazy" alt='${movie.title}' src= '${IMG_URL}${movie.poster_path}' />
-                <p>'${movie.title}'</p>
-                <p>'${decodeGenres(movie.genre_ids)}'</p>|<p>'${movie.release_date}'</p>
+               <li class="gallery__item thumb" data-id="${movie.id}">
+                <img class="gallery__img" loading="lazy" alt='${
+                  movie.title
+                }' src= '${IMG_URL}${movie.poster_path}' />
+                <p class="gallery__title">'${movie.title}'</p>
+                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${
+          movie.release_date
+        }</p>
+
             </li>
               `;
       })
       .join('');
     // console.log(markup);
+    renderMarkup(markup);
     return markup;
   } else {
-    Notify.failure('Oops, film not found') 
+    ref.searchWarning.textContent = 'Ooops, film not found';
+    // Notify.failure('Oops, film not found')
   }
 }
 
 function clearOldMarkup() {
-  gallery.innerHTML="";
+  gallery.innerHTML = '';
 }
 
 function renderMarkup(markup) {
