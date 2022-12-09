@@ -73,17 +73,16 @@ export default function createMarkupList(data) {
       .map(movie => {
         // console.log(movie);
         return `
-               <li class="gallery__item thumb" data-id="${movie.id}">
-                <img class="gallery__img" loading="lazy" alt='${
+        <li class="gallery__item thumb" data-id="${movie.id}">
+                <img onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';" class="gallery__img" loading="lazy" alt='${
                   movie.title
-                }' src= '${IMG_URL}${movie.poster_path}' />
-                <p class="gallery__title">'${movie.title}'</p>
-                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${
-          movie.release_date
-        }</p>
 
-            </li>
-              `;
+                }' src= '${IMG_URL}${movie.poster_path}'/>
+                <div class="gallery__info">
+                  <p class="gallery__title">${movie.title}</p>
+                  <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+                </div>
+                </li>`;
       })
       .join('');
     // console.log(markup);

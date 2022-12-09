@@ -1,3 +1,8 @@
+.button-select {
+    display: flex;
+    justify-content: center;
+}
+
 select {
     padding: 4px;
 }
@@ -18,6 +23,20 @@ select {
     padding: 10px 15px;
     cursor: pointer;
     user-select: none;
+    transition: var(--default-transition);
+    animation-name: newSelect;
+    animation-duration: 2300ms;
+    animation-delay: 700ms;
+    animation-fill-mode: backwards;
+}
+
+@keyframes newSelect{
+    0%{
+        transform: translateX(-400%);
+    }
+    100%{
+        transform: translateX(0);
+    }
 }
 
 .new-select__list {
