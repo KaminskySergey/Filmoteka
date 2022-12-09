@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix'
+// import { Notify } from 'notiflix'
 
 import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from '../js/modal-movies/modal-movies'
 
@@ -137,6 +137,7 @@ signOutBtn.addEventListener('click', signUserOut);
           }
         }
 
+
        updateDocW = async function updateDocInWatched() {
           
           const ref = doc(db, "Watched", currentUser.email)
@@ -152,6 +153,26 @@ signOutBtn.addEventListener('click', signUserOut);
             console.log(movieGenres);
         }
       
+
+      //  export async function updateDocInWatched() {
+          
+      //     const ref = doc(db, "Watched", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
+
+
+       
+
+     
+
+          
+      //     const ref = doc(db, "Queue", currentUser.email)
+      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+      //       console.log(movieGenres);
+      //   }
+
+
 // ===================== FIRESTORE ^^ ============================
 
 // =====================  AUTH:  ==========================
