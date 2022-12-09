@@ -284,7 +284,7 @@ async function showQueueResult() {
         const data = await getDocumentQueue();
         const resultEl = await renderLibraryMarkup(data);
         
-        galleryEl.insertAdjacentHTMLresultEl;
+        galleryEl.innerHTML = resultEl;
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
