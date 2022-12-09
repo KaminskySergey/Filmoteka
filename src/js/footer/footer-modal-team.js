@@ -107,14 +107,14 @@ function markupOne(el){
 <div>
 <div class="modal-team__film">
 <button class="modal__films--top modal-films__click-js" type="button">Top Films:</button>
-    <ul class="top-films__list is-hidden">
+    <ul class="top-films__list">
         
     </ul>
 </div>
 
 <div class="modal-team__actor">
 <button class="modal__actor--top modal-actors__click-js" type="button">Top Actors:</button>
-    <ul class="top-actor__list is-hidden">
+    <ul class="top-actor__list">
         <li><img href="${el.actors}"></li>
     </ul>
 </div>
