@@ -64,7 +64,7 @@ async function makeMarkup(page) {
   const render = await renderMarkup(total);
 }
 
-function createMarkupList(data) {
+export default function createMarkupList(data) {
   if (data !== 0) {
     ref.searchWarning.textContent = "";
     const markup = data.results
