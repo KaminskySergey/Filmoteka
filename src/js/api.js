@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default class MoviesApi {
   constructor() {
-    this.searchQuery = '';
+    this.inputValue = '';
     this.movieId = '';
     this._page = 1;
   }
@@ -20,6 +20,18 @@ export default class MoviesApi {
       console.error(error);
     }
   }
+  
+  async getSearchMovies() {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}?${API_KEY}&query=${this.inputValue}&page=${this.page}`
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+}
+
 
   incrementPage() {
     this._page += 1;
@@ -30,11 +42,11 @@ export default class MoviesApi {
   }
 
   get query() {
-    return this.searchQuery;
+    return this.inputValue;
   }
 
   set query(newQuery) {
-    this.searchQuery = newQuery;
+    this.inputValue = newQuery;
   }
 
   set page(newPage) {
