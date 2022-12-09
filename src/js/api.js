@@ -21,28 +21,28 @@ export default class MoviesApi {
     }
   }
 
-  // async getSearchMovies() {
-  //   try {
-  //     const response = await axios.get(
-  //       `${BASE_URL}/search/movie?api_key=${API_KEY}&page=${this._page}&query=${this.inputValue}`
-  //     );
-  //     console.log(response);
-  //     return response;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  async getSearchMovies() {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&page=${this._page}&query=${this.inputValue}`
+      );
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
   // ============================api genres============================
-  // async getGenersMovies() {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.themoviedb.org/3/genre/movie/list?${API_KEY}&language=en-US`
-  //     );
-  //     return response;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  async getGenersMovies() {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?${API_KEY}&language=en-US`
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   incrementPage() {
     this._page += 1;
