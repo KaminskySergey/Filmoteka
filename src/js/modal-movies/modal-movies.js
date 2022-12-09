@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
+
 import { updateDocInWatched, updateDocInQueue }  from '../../js/firebase';
+
 // import  updateDocInQueue  from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
@@ -9,10 +11,12 @@ const API_KEY = '102d4305e0abdbf0fd48836d5abb1978';
 export let movieID = '';
 let movieInfo = '';
 let instance;
+
 export let moviePoster;
 export let movieTitle;
 export let movieGenres;
 export let movieReleaseDate;
+
 
 getRef('.gallery__list').addEventListener('click', renderMarkupModal);
 // getRef('.backdrop').addEventListener('click', onClickClose);
@@ -89,9 +93,12 @@ function createMurkupModal({
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
 
+
           <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched">
+
             add to Watched
           </button>
+
         </li>
         <li class="modal__btn-item">
           <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">add to queue</button>
@@ -105,6 +112,7 @@ function createMurkupModal({
 }
 
 async function renderMarkupModal(e) {
+  if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') return;
   toggleModal();
   
   getRef('.backdrop').addEventListener('click', onClickClose);
@@ -118,20 +126,24 @@ async function renderMarkupModal(e) {
   );
   movieInfo = getAxios.data;
 
+
   // moviePoster = getAxios.data.backdrop_path;
   // movieTitle = getAxios.data.original_title;
   // movieGenres = getAxios.data.genres.map(e => e.name);
   // movieReleaseDate = getAxios.data.release_date;
+
 
   const markup = createMurkupModal(getAxios.data);
   getRef('.modal').insertAdjacentHTML('beforeend', markup);
 
   const addToWatchedBtn = document.querySelector('#add-to-watched');
   const addToQueueBtn = document.querySelector('#add-to-queue');
+
   console.log(addToWatchedBtn);
   console.log(addToQueueBtn);
   addToWatchedBtn.addEventListener('click', updateDocInWatched);
   addToQueueBtn.addEventListener('click',  updateDocInQueue);
+
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
@@ -187,3 +199,5 @@ function onClickClose(e) {
     closeModal();
   }
 }
+
+export { movieInfo };

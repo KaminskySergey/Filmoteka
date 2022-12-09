@@ -19,6 +19,7 @@ import './js/footer/footer-modal-team';
 
 // modal movies ==============================
 import './js/modal-movies/modal-movies';
+import './js/modal-movies/modal-movie-buttons';
 
 // import './js/modal-movies/modal-movie-buttons';
 
