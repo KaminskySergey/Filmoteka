@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import { updateDocInWatched, updateDocInQueue }  from '../../js/firebase';
+import { updateDocW, updateDocQ }  from '../../js/firebase';
 // import  updateDocInQueue  from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
@@ -130,8 +130,8 @@ async function renderMarkupModal(e) {
   const addToQueueBtn = document.querySelector('#add-to-queue');
   console.log(addToWatchedBtn);
   console.log(addToQueueBtn);
-  addToWatchedBtn.addEventListener('click', updateDocInWatched);
-  addToQueueBtn.addEventListener('click',  updateDocInQueue);
+  addToWatchedBtn.addEventListener('click', updateDocW);
+  addToQueueBtn.addEventListener('click',  updateDocQ);
 
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
