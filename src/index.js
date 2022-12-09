@@ -23,5 +23,9 @@ import './js/footer/footer-modal-team';
 import './js/modal-movies/modal-movies';
 import './js/modal-movies/modal-movie-buttons';
 
+
+// import './js/modal-movies/modal-movie-buttons';
+
+
 // feedback modal
 import './js/feedback-modal/_feedback-modal';
