@@ -145,7 +145,7 @@ signOutBtn.addEventListener('click', signUserOut);
         }
       export let updateDocW;
       export let updateDocQ;
-       const updateDocQ = async function updateDocInQueue() {
+      updateDocQ = async function updateDocInQueue() {
           
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
