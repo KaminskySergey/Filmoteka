@@ -9,6 +9,7 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 4;
+    transition: opacity 250ms var(--cubic-bezier), visibility 250ms var(--cubic-bezier);
     }
     
     
@@ -123,7 +124,7 @@ align-items: center;
     @media screen and (max-width:767px){
         margin-bottom: 20px
     }
-
+    
     margin-bottom: 10px
 }
 

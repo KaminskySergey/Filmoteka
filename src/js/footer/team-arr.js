@@ -48,7 +48,7 @@ export const team = [
         name: "Oksana",
         surname: "Mashtaler",
         img: "https://i.ibb.co/Pm1zR1v/Oksana.jpg",
-        wokr: "pagination / language",
+        work: "pagination / language",
         films: 
             [
                 { name: 'American History X', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2dIE1KOc7Fa3FIMzph8mBJK17KM.jpg'},
@@ -69,7 +69,7 @@ export const team = [
         name: "Maks",
         surname: "Budiukin",
         img: "https://i.ibb.co/9TSX7NM/Maks.jpg",
-        wokr: "firebase",
+        work: "firebase",
         films: 
             [
             { name: 'Avatar', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUKcrcO3wEPhNnzGq06JIX7GIEb.jpg'},
@@ -226,15 +226,16 @@ export const team = [
         work: "chat",
         films: 
         [
-            { name: '', imgUrl: ''},
-            { name: '', imgUrl: ''},
-            { name: '', imgUrl: ''},
+            { name: 'Pulp Fiction', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7FaHjGa4RvKJZHzY7c9UgTTH9KN.jpg'},
+            { name: 'The Shawshank Redemption', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yvmKPlTIi0xdcFQIFcQKQJcI63W.jpg'},
+            { name: 'Forrest Gump', imgUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oTiRsQCIHJPUR7wA1chpTf8j9go.jpg'},
         ]
         ,
-        actors: [
-            
-            
-            
+        actors: 
+        [
+            { name: 'Thomas Hardy', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/sGMA6pA2D6X0gun49igJT3piHs3.jpg'},
+            { name: 'Leonardo Wilhelm DiCaprio', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg'},
+            { name: 'Tom Hanks', imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/xndWFsBlClOJFRdhSt4NBwiPq2o.jpg'},
         ]
         
     },
