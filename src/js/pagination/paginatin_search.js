@@ -50,7 +50,7 @@ export default function createPagination(total_results, inputValue) {
     movies.page = eventData.page;
     movies.query = inputValue;
     movies.getSearchMovies().then(response => {
-      createMarkupList(response.data.results);
+      createMarkupList(response.data);
     });
   });
 }

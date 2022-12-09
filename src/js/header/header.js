@@ -61,7 +61,7 @@ async function fetchAxios(page) {
 
 async function makeMarkup(page) {
   const data = await fetchAxios(page);
-  const total = await createMarkupList(data.results);
+  const total = await createMarkupList(data);
   const render = await renderMarkup(total);
 }
 
@@ -69,7 +69,7 @@ export default function createMarkupList(data) {
   console.log(data);
   if (data !== 0) {
     ref.searchWarning.textContent = '';
-    const markup = data
+    const markup = data.results
       .map(movie => {
         // console.log(movie);
         return `

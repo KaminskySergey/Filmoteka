@@ -35,7 +35,9 @@ function onClickBackdrop(evt){
 }
 
 function onCloseEscape(evt){
-    console.log(evt);
+    if(body.classList.contains('show-modal-team')){
+        return
+    }
     if(evt.code === `Escape`){
         onCloseModal()
     }
