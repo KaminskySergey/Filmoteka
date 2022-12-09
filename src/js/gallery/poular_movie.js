@@ -22,8 +22,10 @@ function createMoviesList(movie) {
                   movie.title
 
                 }' src= '${IMG_URL}${movie.poster_path}'/>
-                <p class="gallery__title">${movie.title}</p>
-                <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+                <div class="gallery__info">
+                  <p class="gallery__title">${movie.title}</p>
+                  <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date}</p>
+                </div>
                 </li>`;
 
 }
