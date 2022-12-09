@@ -18,7 +18,7 @@ export default function getMoviesInfo(data) {
 function createMoviesList(movie) {
   return `
         <li class="gallery__item thumb" data-id="${movie.id}">
-                <img class="gallery__img" loading="lazy" alt='${
+                <img onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';" class="gallery__img" loading="lazy" alt='${
                   movie.title
 
                 }' src= '${IMG_URL}${movie.poster_path}'/>
