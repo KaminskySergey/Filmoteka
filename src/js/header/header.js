@@ -3,7 +3,7 @@ import { fetchGenres } from '../gallery/poular_movie';
 import { decodeGenres } from '../gallery/poular_movie';
 import { IMG_URL } from '../gallery/poular_movie';
 import { gallery } from '../gallery/poular_movie';
-// import createPagination from '../pagination/paginatin_search';
+import createPagination from '../pagination/paginatin_search';
 // import { Notify } from 'notiflix';
 
 const ref = {
@@ -52,6 +52,7 @@ async function fetchAxios(page) {
 
   if (dataStatus === 200 && dataResults > 0) {
     clearOldMarkup();
+    createPagination(dataResults, inputValue);
     return data;
   }
 
@@ -65,11 +66,12 @@ async function makeMarkup(page) {
 }
 
 export default function createMarkupList(data) {
+  console.log(data);
   if (data !== 0) {
     ref.searchWarning.textContent = '';
     const markup = data
       .map(movie => {
-        // console.log(movie)
+        // console.log(movie);
         return `
                <li class="gallery__item thumb" data-id="${movie.id}">
                 <img class="gallery__img" loading="lazy" alt='${
@@ -85,6 +87,7 @@ export default function createMarkupList(data) {
       })
       .join('');
     // console.log(markup);
+    renderMarkup(markup);
     return markup;
   } else {
     ref.searchWarning.textContent = 'Ooops, film not found';
