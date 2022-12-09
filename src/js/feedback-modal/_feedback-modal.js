@@ -10,6 +10,7 @@ const refs = {
 }
 
 const STORAGE_KEY = 'feedback-form-state';
+
 const feedbackFormData = {};
 
 
@@ -19,6 +20,7 @@ populateFeedbackForm();
 
 function onFeedbackModalOpen() {
     refs.feedbackBackdrop.classList.remove("is-hidden");
+    populateFeedbackForm()
     refs.closeFeedbackModalBtn.addEventListener('click', onFeedbackModalClose)
     document.addEventListener('keyup', onEscKeyPress);
     refs.feedbackBackdrop.addEventListener('click', onFeedbackBackdropClick)
@@ -55,16 +57,15 @@ function onFeedbackFormSubmit(event) {
     
     onFeedbackModalClose()
     localStorage.removeItem(STORAGE_KEY);
-    console.log(feedbackFormData)
+
 
 }
 
 function onFeedbackFormInput(event) {
-    if (event.target.value.trim() === "") {
-        event.currentTarget.reset();
-    return
-  }
-    
+    if (refs.formFieldName.value.trim() === '' && refs.formFieldEmail.value.trim() === '' && refs.formFieldEmail.value.trim() === '') {
+        event.currentTarget.reset()
+    }
+   
     feedbackFormData[event.target.name] = event.target.value;
     
     const feedbackFormDataJSON = JSON.stringify(feedbackFormData);
@@ -76,9 +77,20 @@ function populateFeedbackForm() {
     const savedFeedbackFormData = JSON.parse(savedFeedbackFormDataJSON);
 
     if (savedFeedbackFormDataJSON) {
-        refs.formFieldName.value = savedFeedbackFormData.userName;
-        refs.formFieldEmail.value = savedFeedbackFormData.userEmail;
-        refs.formFieldMessage.value = savedFeedbackFormData.userMessage;
+        if (savedFeedbackFormData.name) {
+            refs.formFieldName.value = savedFeedbackFormData.name;
+        }
+        if (savedFeedbackFormData.email) {
+            refs.formFieldEmail.value = savedFeedbackFormData.email;
+        }
+        if (savedFeedbackFormData.message) {
+            refs.formFieldMessage.value = savedFeedbackFormData.message;
+        }
     }
-}
+
+    
+} 
+
+    
+
 
