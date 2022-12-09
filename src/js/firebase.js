@@ -137,6 +137,23 @@ signOutBtn.addEventListener('click', signUserOut);
           }
         }
 
+
+       updateDocW = async function updateDocInWatched() {
+          
+          const ref = doc(db, "Watched", currentUser.email)
+          const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+            console.log(movieGenres);
+        }
+      export let updateDocW;
+      export let updateDocQ;
+       const updateDocQ = async function updateDocInQueue() {
+          
+          const ref = doc(db, "Queue", currentUser.email)
+          const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+            console.log(movieGenres);
+        }
+      
+
       //  export async function updateDocInWatched() {
           
       //     const ref = doc(db, "Watched", currentUser.email)
@@ -145,7 +162,7 @@ signOutBtn.addEventListener('click', signUserOut);
       //   }
 
 
-        export  async function updateDocInQueue() {
+       
 
      
 
@@ -154,6 +171,7 @@ signOutBtn.addEventListener('click', signUserOut);
       //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
       //       console.log(movieGenres);
       //   }
+
 
 // ===================== FIRESTORE ^^ ============================
 
