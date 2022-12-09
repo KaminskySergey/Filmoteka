@@ -15,7 +15,7 @@ export default class MoviesApi {
       const response = await axios.get(
         `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this._page}`
       );
-      console.log(response);
+      // console.log(response);
       return response;
     } catch (error) {
       console.error(error);
