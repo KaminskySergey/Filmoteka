@@ -7,6 +7,7 @@ export default class MoviesApi {
     this.inputValue = '';
     this.movieId = '';
     this._page = 1;
+    this.genreId = '';
   }
 
   async getPopularMovies() {
@@ -48,8 +49,9 @@ export default class MoviesApi {
   async getGenersMovies() {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?${API_KEY}&language=en-US`
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this._page}&with_genres=${this.genreId}`
       );
+      console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -77,5 +79,12 @@ export default class MoviesApi {
   }
   get page() {
     return this._page;
+  }
+
+  set with_genres(newGenreId) {
+    this.genreId = newGenreId;
+  }
+  get with_genres() {
+    return this.genreId;
   }
 }

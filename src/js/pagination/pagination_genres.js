@@ -2,12 +2,12 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import MoviesApi from '../api';
 import getMoviesInfo from '../gallery/poular_movie';
-// import { createMoviesList } from '../gallery/poular_movie';
+// import getMoviesInfo from '../fiter-button-header/filter-button-header';
 
 const movies = new MoviesApi();
 const gallery = document.querySelector('.gallery__list');
 
-export default function createPagination(total_results) {
+export default function createPagination(total_results, genreId) {
   const container = document.getElementById('tui-pagination-container');
   const options = {
     totalItems: total_results,
@@ -47,9 +47,9 @@ export default function createPagination(total_results) {
   });
 
   pagination.on('afterMove', function (eventData) {
-    movies.page = eventData.page;
     gallery.innerHTML = '';
-    // movies.query = searchQuery;
+    movies.page = eventData.page;
+    movies.with_genres = genreId;
     movies.getGenersMovies().then(response => {
       getMoviesInfo(response.data.results);
     });

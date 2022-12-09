@@ -2,7 +2,6 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import MoviesApi from '../api';
 import createMarkupList from '../header/header';
-// import getMoviesInfo from '../gallery/poular_movie';
 
 const movies = new MoviesApi();
 const gallery = document.querySelector('.gallery__list');
@@ -55,5 +54,3 @@ export default function createPagination(total_results, inputValue) {
     });
   });
 }
-console.log(movies.query);
-console.log(movies.page);
