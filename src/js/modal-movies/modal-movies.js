@@ -128,8 +128,8 @@ async function renderMarkupModal(e) {
 
   const addToWatchedBtn = document.querySelector('#add-to-watched');
   const addToQueueBtn = document.querySelector('#add-to-queue');
-  console.log(addToWatchedBtn);
-  console.log(addToQueueBtn);
+  // console.log(addToWatchedBtn);
+  // console.log(addToQueueBtn);
   addToWatchedBtn.addEventListener('click', updateDocW);
   addToQueueBtn.addEventListener('click',  updateDocQ);
 

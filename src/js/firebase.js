@@ -88,7 +88,7 @@ signOutBtn.addEventListener('click', signUserOut);
           const docRef = await setDoc(refWatched, {})
             
             .then(() => {
-              console.log('Successful operation!')
+              // console.log('Successful operation!')
             })
             .catch((error) => {
               alert("Unsuccessful operation, error:" + error);
@@ -100,7 +100,7 @@ signOutBtn.addEventListener('click', signUserOut);
           const docRef = await setDoc(refWatched, {})
             
             .then(() => {
-              console.log('Successful operation!')
+              // console.log('Successful operation!')
             })
             .catch((error) => {
               alert("Unsuccessful operation, error:" + error);
@@ -113,7 +113,7 @@ signOutBtn.addEventListener('click', signUserOut);
           if (docSnap.exists()) {
            
             let obj = docSnap.data();
-            console.log(obj)
+            // console.log(obj)
             
           }
           else {
@@ -128,7 +128,7 @@ signOutBtn.addEventListener('click', signUserOut);
           if (docSnap.exists()) {
            
             let obj = docSnap.data();
-            console.log(obj)
+            // console.log(obj)
             
           }
           else {
@@ -144,14 +144,14 @@ export let updateDocQ;
           
           const ref = doc(db, "Watched", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-            console.log(movieGenres);
+            // console.log(movieGenres);
 }
         
       updateDocQ = async function updateDocInQueue() {
           
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-            console.log(movieGenres);
+            // console.log(movieGenres);
         }
       
 // ===================== FIRESTORE ^^ ============================
@@ -164,7 +164,7 @@ function signUp() {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(userName)
+    // console.log(userName)
       AddDocument_Watched();
       AddDocument_Queue();
     updateProfile(auth.currentUser, {
@@ -178,8 +178,8 @@ function signUp() {
     const errorCode = error.code;
     const errorMessage = error.message;
       
-    console.log(errorCode);
-    console.log(errorMessage);
+    // console.log(errorCode);
+    // console.log(errorMessage);
     
     if (error.code === "auth/weak-password") {
         signUpWarning.textContent = "Password should be at least 6 characters!";
@@ -196,17 +196,17 @@ function signIn() {
   signInWithEmailAndPassword(auth, signInEmail.value, signInPassword.value)
   .then((userCredential) => {
     // Signed in 
-    console.log(userCredential)
+    // console.log(userCredential)
     const user = userCredential.user;
     // ...
-    console.log(userCredential.user.email)
+    // console.log(userCredential.user.email)
     
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
+    // console.log(errorCode);
+    // console.log(errorMessage);
 
     if (error.code === "auth/too-many-requests") {
         signInWarning.textContent = "Access to this account has been temporarily disabled due to many failed login attempts!";
@@ -234,7 +234,7 @@ auth.onAuthStateChanged((user)=>{
     if(user){
         // alert("Active user " + email);
       currentUser = user;
-      console.log(currentUser)
+      // console.log(currentUser)
       userName.textContent = `Welcome, ${currentUser.displayName}!`;
      
       
@@ -246,7 +246,7 @@ auth.onAuthStateChanged((user)=>{
     }else{
         // alert("No Active user Found")
       currentUser = user;
-      console.log(currentUser)
+      // console.log(currentUser)
         userName.textContent = "";
      
         
@@ -275,7 +275,7 @@ async function showWatchedResult() {
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -288,7 +288,7 @@ async function showQueueResult() {
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -330,7 +330,7 @@ for (let key in data){
     const release_date = data[key].date;
     const genreArr = [];    
     const genreObj = data[key].genres;
-    console.log(genreArr)
+    // console.log(genreArr)
     genreObj.map((genre) => genreArr.push(genre.name))
     
     const poster_path = data[key].poster;
@@ -346,9 +346,9 @@ for (let key in data){
 
             </li>
    `
-    console.log(markupEl)
+    // console.log(markupEl)
     markupArr.push(markupEl);
-    console.log(release_date)
+    // console.log(release_date)
 }
   const markup = markupArr.join("");
     return markup;
