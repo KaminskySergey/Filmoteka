@@ -15,7 +15,7 @@ function addGenresToLocal(dataGenres) {
     localStorage.setItem("genres", JSON.stringify(dataGenres));
 }
 function getGenresToLocal() {
-const getGeners = localStorage.getItem("genres");
+    const getGeners = localStorage.getItem("genres");
     const parsedGeners = JSON.parse(getGeners);
     return parsedGeners;
 }
@@ -29,7 +29,7 @@ async function fetchGenresToLocal() {
 }
 
 
-fetchGenresToLocal(); 
+fetchGenresToLocal();
 
 
 // фетч для знаходження фільмів по жанрам
@@ -41,7 +41,7 @@ async function selectFilm(genreId) {
 
 
     if (dataStatus === 200 && dataResults.length > 0) {
-        // console.log(data);
+
         return data;
     } else {
         return 0
@@ -49,33 +49,33 @@ async function selectFilm(genreId) {
 }
 // Функція для знаходження id жанру через перебирання масиву
 function findIdGenres(nameGenres) {
-     
+
     let selectedGenres = getGenresToLocal().find(gener => gener.name === nameGenres);
     return selectedGenres.id;
 }
 // функція події для рендеру розмітки
 async function selectGenerButton(nameGenres) {
-    
-    // gallery.innerHTML = '';
+
+   
     genreId = findIdGenres(nameGenres);
-    
+
     const movies = await selectFilm(genreId);
-    // console.log(movies)
+    
     gallery.innerHTML = '';
     movies.results.forEach((movie) => {
-        // console.log(movie);
+        
         const markup = createMoviesList(movie);
-         
+
         gallery.insertAdjacentHTML('beforeend', markup);
     })
 }
 
-// refs.filterList.addEventListener("click", selectGenerButton);
+
 
 const select = document.querySelector(".genre-select");
 
 function createGenersList(genre) {
-  return `
+    return `
   <option class="genre-select__item" value="${genre}">${genre}</option>
    `;
 }
@@ -83,10 +83,9 @@ function createGenersList(genre) {
 function getGenersInfo() {
 
     const genres = getGenresToLocal();
-    // console.log(movies)
-    // const markup = "";
+   
     genres.forEach((genre) => {
-        // console.log(movie);
+        
         const markup = createGenersList(genre.name);
         select.insertAdjacentHTML('beforeend', markup);
     })
@@ -95,15 +94,15 @@ function getGenersInfo() {
 
 getGenersInfo();
 
-$(select).each(function() {
-  const _this = $(this),
-      
+$(select).each(function () {
+    const _this = $(this),
+
         selectOption = _this.find('option'),
         selectOptionLength = selectOption.length,
         selectedOption = selectOption.filter(':selected'),
-        duration = 450; // длительность анимации 
-  
-  
+        duration = 450; 
+
+
     _this.hide();
     _this.wrap('<div class="select"></div>');
     $('<div>', {
@@ -111,40 +110,40 @@ $(select).each(function() {
         text: _this.children('option:disabled').text()
     }).insertAfter(_this);
 
-  const selectHead = _this.next('.new-select');
+    const selectHead = _this.next('.new-select');
     $('<div>', {
         class: 'new-select__list'
     }).insertAfter(selectHead);
 
-  const selectList = selectHead.next('.new-select__list');
-  
+    const selectList = selectHead.next('.new-select__list');
+
     for (let i = 1; i < selectOptionLength; i++) {
         $('<div>', {
             class: 'new-select__item',
             html: $('<span>', {
-              text: selectOption.eq(i).text()
+                text: selectOption.eq(i).text()
             })
         })
-        .attr('data-value', selectOption.eq(i).val())
-        .appendTo(selectList);
+            .attr('data-value', selectOption.eq(i).val())
+            .appendTo(selectList);
     }
 
     const selectItem = selectList.find('.new-select__item');
-  selectList.slideUp(0);
-  
-    selectHead.on('click', function() {
-        if ( !$(this).hasClass('on') ) {
+    selectList.slideUp(0);
+
+    selectHead.on('click', function () {
+        if (!$(this).hasClass('on')) {
             $(this).addClass('on');
             selectList.slideDown(duration);
 
-            selectItem.on('click', function() {
+            selectItem.on('click', function () {
                 let chooseItem = $(this).data('value');
                 selectGenerButton(chooseItem);
                 $('select').val(chooseItem).attr('selected', 'selected');
-                selectHead.text( $(this).find('span').text() );
+                selectHead.text($(this).find('span').text());
 
-              
-              
+
+
                 selectList.slideUp(duration);
                 selectHead.removeClass('on');
             });
