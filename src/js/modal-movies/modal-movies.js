@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import { updateDocInWatched, updateDocInQueue }  from '../firebase';
+import { updateDocInWatched, updateDocInQueue }  from '../../js/firebase';
 // import  updateDocInQueue  from '../firebase';
 
 const getRef = selector => document.querySelector(selector);
