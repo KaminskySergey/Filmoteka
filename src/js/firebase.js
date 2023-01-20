@@ -53,7 +53,7 @@ const firebaseConfig = {
 };
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField, getDocs, } from 'firebase/firestore/lite';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";      
 
 const app = initializeApp(firebaseConfig);
@@ -139,34 +139,21 @@ signOutBtn.addEventListener('click', signUserOut);
 
 
        
-      export let updateDocW;
-      export let updateDocQ;
+      // export let updateDocW;
+      // export let updateDocQ;
       
-      updateDocW = async function updateDocInWatched() { 
+      export const updateDocW = async function updateDocInWatched() { 
           const ref = doc(db, "Watched", currentUser.email)
           console.log(ref)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
           }
         
-      updateDocQ = async function updateDocInQueue() {
+      export const updateDocQ = async function updateDocInQueue() {
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
         }
-      
-      //  export async function updateDocInWatched() {
-          
-      //     const ref = doc(db, "Watched", currentUser.email)
-      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-      //       console.log(movieGenres);
-      //   }
-          
-      //     const ref = doc(db, "Queue", currentUser.email)
-      //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-      //       console.log(movieGenres);
-      //   }
-
 
 // ===================== FIRESTORE ^^ ============================
 
@@ -176,9 +163,7 @@ signOutBtn.addEventListener('click', signUserOut);
 function signUp() {
   createUserWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
-    // Signed in 
     const user = userCredential.user;
-    // console.log(userName)
       AddDocument_Watched();
       AddDocument_Queue();
     updateProfile(auth.currentUser, {
@@ -192,8 +177,7 @@ function signUp() {
     const errorCode = error.code;
     const errorMessage = error.message;
       
-    // console.log(errorCode);
-    // console.log(errorMessage);
+
     
     if (error.code === "auth/weak-password") {
         signUpWarning.textContent = "Password should be at least 6 characters!";
@@ -209,18 +193,16 @@ function signUp() {
 function signIn() {
   signInWithEmailAndPassword(auth, signInEmail.value, signInPassword.value)
   .then((userCredential) => {
-    // Signed in 
-    // console.log(userCredential)
+
     const user = userCredential.user;
     // ...
-    // console.log(userCredential.user.email)
+
     
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // console.log(errorCode);
-    // console.log(errorMessage);
+
 
     if (error.code === "auth/too-many-requests") {
         signInWarning.textContent = "Access to this account has been temporarily disabled due to many failed login attempts!";
@@ -246,7 +228,7 @@ function signUserOut() {
 
 auth.onAuthStateChanged((user)=>{
     if(user){
-        // alert("Active user " + email);
+
       currentUser = user;
 
       userName.textContent = `Welcome, ${currentUser.displayName}!`;
@@ -260,7 +242,7 @@ auth.onAuthStateChanged((user)=>{
     }else{
         // alert("No Active user Found")
       currentUser = user;
-      // console.log(currentUser)
+
         userName.textContent = "";
      
         
