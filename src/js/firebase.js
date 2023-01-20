@@ -267,7 +267,11 @@ async function showWatchedResult() {
         const data = await getDocumentWatched();
         const resultEl = await renderLibraryMarkup(data);
         
-        galleryEl.innerHTML = resultEl;
+      galleryEl.innerHTML = resultEl;
+      
+        const delButton = document.querySelector('gallery_delButton');
+        delButton.addEventListener('click', deleteMovieW);
+ 
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
@@ -320,7 +324,8 @@ async function getDocumentQueue() {
         
 function renderLibraryMarkup(data) {
 
-const markupArr = [];   
+  const markupArr = [];   
+  
 for (let key in data){
     const id = data[key].id;
     const release_date = data[key].date;
@@ -340,6 +345,7 @@ for (let key in data){
                 <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
                 <p class="gallery__genre">${genre_ids} | ${release_date.substr(0, 4)}</p>
+                <button type="button" class="library_delButton">x</button>
                 </div>
             </li>
    `
@@ -349,6 +355,22 @@ for (let key in data){
 }
   const markup = markupArr.join("");
     return markup;
+}
+
+async function deleteMovieW() {
+  const movieRef = doc(db, 'Watched', currentUser.email);
+
+    await updateDoc(movieRef, {
+    [movieID]: deleteField()
+});
+}
+
+async function deleteMovieQ() {
+  const movieRef = doc(db, 'Queue', currentUser.email);
+
+    await updateDoc(movieRef, {
+    [movieID]: deleteField()
+});
 }
 
 // ======================== LIBRARY ^^ ================================
