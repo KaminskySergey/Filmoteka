@@ -17,7 +17,7 @@ function addGenresToLocal(dataGenres) {
 function getGenresToLocal() {
 const getGeners = localStorage.getItem("genres");
     const parsedGeners = JSON.parse(getGeners);
-    console.log(parsedGeners);
+    // console.log(parsedGeners);
     return parsedGeners;
 }
 // фунція для знаходженню та запису масиву жанрів з айдішками

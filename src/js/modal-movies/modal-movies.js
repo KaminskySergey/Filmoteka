@@ -138,6 +138,14 @@ async function renderMarkupModal(e) {
   addToWatchedBtn.addEventListener('click', updateDocW);
   addToQueueBtn.addEventListener('click', updateDocQ);
 
+  // const handleToggleToWatchedBtn = (e) => {
+  //   return updateDocW(e)
+  // }
+
+  // const handleToggleToQueueBtn = (e) => {
+  //   return updateDocQ(e)
+  // }
+
   await getRef('.btn-play').addEventListener('click', getTrailer);
 }
 //===============трейлер============================

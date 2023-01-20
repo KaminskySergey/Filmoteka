@@ -1,8 +1,7 @@
-console.log('Hello, World!');
-
 const offset = 100;
 const scrollUp = document.querySelector('.totop');
 const scrollUpSvgPath = document.querySelector('.totop__svg-path');
+
 const pathLength = scrollUpSvgPath.getTotalLength();
 
 scrollUpSvgPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
