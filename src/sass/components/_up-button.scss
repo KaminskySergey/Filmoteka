@@ -18,16 +18,17 @@
     visibility: hidden;
     overflow: hidden;
 
+    @media screen and (min-width: 480px) {
+    width: 70px;
+    height: 70px;
+    // border-radius: 30px;
+    }
+
     @media screen and (min-width: 768px) {
         right: 30px;
         bottom: 30px;
     }
 
-    @media screen and (max-width: 400px) {
-    width: 30px;
-        height: 30px;
-        border-radius: 30px;
-    }
 
         &::after {
     

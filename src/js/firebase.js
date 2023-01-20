@@ -133,42 +133,34 @@ signOutBtn.addEventListener('click', signUserOut);
           }
           else {
             alert("No such document") // "Sorry, your collection is empty. Try to add something there first!"
-            // ЗДЕСЬ МОЖНО ОТРЕНДЕРИТЬ ЗАГЛУШКУ В ГАЛЕРЕЮ WATCHED, ЕСЛИ ОНА ПУСТАЯ
+            // ЗДЕСЬ МОЖНО ОТРЕНДЕРИТЬ ЗАГЛУШКУ В ГАЛЕРЕЮ Queue, ЕСЛИ ОНА ПУСТАЯ
           }
         }
 
 
        
       export let updateDocW;
-export let updateDocQ;
-      updateDocW = async function updateDocInWatched() {
-
-          
+      export let updateDocQ;
+      
+      updateDocW = async function updateDocInWatched() { 
           const ref = doc(db, "Watched", currentUser.email)
+          console.log(ref)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
-}
+          }
         
       updateDocQ = async function updateDocInQueue() {
-          
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
         }
       
-
       //  export async function updateDocInWatched() {
           
       //     const ref = doc(db, "Watched", currentUser.email)
       //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
       //       console.log(movieGenres);
       //   }
-
-
-       
-
-     
-
           
       //     const ref = doc(db, "Queue", currentUser.email)
       //     const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
