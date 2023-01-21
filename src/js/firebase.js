@@ -1,5 +1,6 @@
 import { Notify } from 'notiflix'
 
+// import close from "../images/sprite.svg#icon-close"
 import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from '../js/modal-movies/modal-movies'
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500'; // ["w300","w780","w1280","original"]
@@ -141,36 +142,68 @@ signOutBtn.addEventListener('click', signUserOut);
        
       // export let updateDocW;
       // export let updateDocQ;
+      let state = 0;
       
-      export const updateDocW = async function updateDocInWatched() { 
+      export const updateDocW = async function updateDocInWatched(e) { 
+        if (state === 0){
+          e.target.innerText = "REMOVE TO WATCHED"
+          console.log("add Watched")
           const ref = doc(db, "Watched", currentUser.email)
-          console.log(ref)
+          // console.log(ref)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
-          }
+          state = 1;
+        } else if (state === 1) {
+          e.target.innerText = "ADD TO WATCHED"
+          // console.log("delete Watched")
+          const ref = doc(db, "Watched", currentUser.email);
+          const id = Number((e.path[4]).getAttribute("data-id"));
+          const docRef = await updateDoc(ref, { [id]: deleteField() })
+          state = 0;
+        }
+      }
         
-      export const updateDocQ = async function updateDocInQueue() {
+      export const updateDocQ = async function updateDocInQueue(e) {
+        if (state === 0){
+          e.target.innerText = "ADD TO QUEUE"
+          // console.log("add Queue")
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
+            state = 1;
+        } else if (state === 1) {
+          e.target.innerText = "REMOVE TO QUEUE"
+          // console.log("delete Queue")
+          const ref = doc(db, "Queue", currentUser.email);
+          const id = Number((e.path[4]).getAttribute("data-id"));
+          // .closest("li").dataset.id;
+          console.log(id)
+          const docRef = await updateDoc(ref, { [id]: deleteField() })
+          state = 0;
+        }
 }
         
 async function deleteMovieW(e) {
-  if (e.target.nodeName !== 'BUTTON') { return };
-  const ref = doc(db, "Watched", currentUser.email);
-  const id = e.target.closest("li").dataset.id;
-  console.log(id)
-  const docRef = await updateDoc(ref, { [id]: deleteField() })
-  showWatchedResult()
+  // console.log(e.target.nodeName)
+  if (e.target.nodeName === 'BUTTON' || e.target.nodeName === 'svg' || e.target.nodeName === 'use') {
+
+    const ref = doc(db, "Watched", currentUser.email);
+    const id = e.target.closest("li").dataset.id;
+    // console.log(id)
+    const docRef = await updateDoc(ref, { [id]: deleteField() })
+    showWatchedResult()
+  };
 }
 
 async function deleteMovieQ(e) {
-  if (e.target.nodeName !== 'BUTTON') { return };
-  const ref = doc(db, "Queue", currentUser.email);
-  const id = e.target.closest("li").dataset.id;
-  console.log(id)
-  const docRef = await updateDoc(ref, { [id]: deleteField() })
-  showQueueResult()
+  if (e.target.nodeName === 'BUTTON' || e.target.nodeName === 'svg' || e.target.nodeName === 'use') {
+
+    const ref = doc(db, "Queue", currentUser.email);
+    const id = e.target.closest("li").dataset.id;
+    // console.log(id)
+    const docRef = await updateDoc(ref, { [id]: deleteField() })
+    showQueueResult()
+  };
 }
 
 // ===================== FIRESTORE ^^ ============================
@@ -373,6 +406,7 @@ for (let key in data){
     const title = data[key].title;
     const genre_ids = genreArr.join(", ");
 
+
   const markupEl =
     
     `<li class="gallery__item thumb" data-id="${id}">
@@ -380,7 +414,9 @@ for (let key in data){
                 <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
                 <p class="gallery__genre">${genre_ids} | ${release_date.substr(0, 4)}</p>
-                <button type="button" class="library_delButton">x</button>
+                <button type="button" class="library_delButton">
+                <svg width="18" height="18" class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg>
+                </button>
                 </div>
             </li>
    `

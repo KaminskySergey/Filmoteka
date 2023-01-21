@@ -43,7 +43,7 @@ function createMurkupModal({
     return el.name;
   });
   return ` 
-<div class="modal-container">
+<div class="modal-container" data-id="${movieID}">
     <img
       class="modal__img"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
