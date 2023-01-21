@@ -1,4 +1,4 @@
-// import { Notify } from 'notiflix'
+import { Notify } from 'notiflix'
 
 import { movieID, moviePoster, movieTitle, movieReleaseDate, movieGenres } from '../js/modal-movies/modal-movies'
 
@@ -153,7 +153,25 @@ signOutBtn.addEventListener('click', signUserOut);
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
-        }
+}
+        
+async function deleteMovieW(e) {
+  if (e.target.nodeName !== 'BUTTON') { return };
+  const ref = doc(db, "Watched", currentUser.email);
+  const id = e.target.closest("li").dataset.id;
+  console.log(id)
+  const docRef = await updateDoc(ref, { [id]: deleteField() })
+  showWatchedResult()
+}
+
+async function deleteMovieQ(e) {
+  if (e.target.nodeName !== 'BUTTON') { return };
+  const ref = doc(db, "Queue", currentUser.email);
+  const id = e.target.closest("li").dataset.id;
+  console.log(id)
+  const docRef = await updateDoc(ref, { [id]: deleteField() })
+  showQueueResult()
+}
 
 // ===================== FIRESTORE ^^ ============================
 
@@ -259,6 +277,8 @@ auth.onAuthStateChanged((user)=>{
 const headerWatchedBtn = document.querySelector('.my_library-btn_watched');
 const headerQueueBtn = document.querySelector('.my_library-btn_queue');
 
+const dummy = document.querySelector('.lib-pic')
+
 headerWatchedBtn.addEventListener('click', showWatchedResult);
 headerQueueBtn.addEventListener('click', showQueueResult);
 
@@ -267,15 +287,22 @@ async function showWatchedResult() {
         const data = await getDocumentWatched();
         const resultEl = await renderLibraryMarkup(data);
         
+            
       galleryEl.innerHTML = resultEl;
+      dummy.classList.add("visually-hidden")
+      if (resultEl === "") {
+        galleryEl.innerHTML = ""
+        dummy.classList.remove("visually-hidden")
+      }
       
-        const delButton = document.querySelector('gallery_delButton');
-        delButton.addEventListener('click', deleteMovieW);
+        const delButton = document.querySelector('.library_delButton');
+        galleryEl.addEventListener('click', deleteMovieW);
  
         
     } catch (error) {
-        Notify.failure('Oops, something went wrong! We are working hard to fix it!');
-        // console.log(error)
+      Notify.failure('Oops, something went wrong! We are working hard to fix it!');
+    
+      
     }
 }
 
@@ -284,11 +311,19 @@ async function showQueueResult() {
         const data = await getDocumentQueue();
         const resultEl = await renderLibraryMarkup(data);
         
-        galleryEl.innerHTML = resultEl;
+      galleryEl.innerHTML = resultEl;
+      dummy.classList.add("visually-hidden")
+      if (resultEl === "") {
+        galleryEl.innerHTML = ""
+        dummy.classList.remove("visually-hidden")
+      }
+      
+      const delButton = document.querySelector('.library_delButton');
+        galleryEl.addEventListener('click', deleteMovieQ);
         
     } catch (error) {
         Notify.failure('Oops, something went wrong! We are working hard to fix it!');
-        // console.log(error)
+        
     }
 }
 
@@ -357,21 +392,7 @@ for (let key in data){
     return markup;
 }
 
-async function deleteMovieW() {
-  const movieRef = doc(db, 'Watched', currentUser.email);
 
-    await updateDoc(movieRef, {
-    [movieID]: deleteField()
-});
-}
-
-async function deleteMovieQ() {
-  const movieRef = doc(db, 'Queue', currentUser.email);
-
-    await updateDoc(movieRef, {
-    [movieID]: deleteField()
-});
-}
 
 const x = 0;
 // ======================== LIBRARY ^^ ================================
