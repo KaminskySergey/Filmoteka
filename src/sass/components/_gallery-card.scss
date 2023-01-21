@@ -49,3 +49,19 @@ $desktop: 1280px;
     }
 
 }
+
+.library_delButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-genre);
+    border: none;
+    cursor: pointer;
+    &:focus,
+    &:hover {
+        scale: 1.05;
+        border-radius: 4px;
+    }
+}

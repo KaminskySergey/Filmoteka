@@ -20,6 +20,7 @@
     }
 
     &__item {
+        position: relative;
         margin: 0 auto;
         margin-bottom: 20px;
         // height: 443px;
@@ -73,9 +74,9 @@
 }
 
 
-
-// .gallery__placeholder-card {
-//     height: 100%;
-//     width: 100%;
-//     background-color: orange;
-// }
+.lib-pic {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
