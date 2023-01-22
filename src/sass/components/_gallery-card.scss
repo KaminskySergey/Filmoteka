@@ -51,6 +51,9 @@ $desktop: 1280px;
 }
 
 .library_delButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 0;
     right: 0;
@@ -58,10 +61,15 @@ $desktop: 1280px;
     height: 32px;
     background-color: var(--color-genre);
     border: none;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    opacity: 0.9;
+    fill: #000;
+    transition: opacity 350ms var(--cubic-bezier), fill 350ms var(--cubic-bezier);
     cursor: pointer;
     &:focus,
     &:hover {
-        scale: 1.05;
-        border-radius: 4px;
+        opacity: 1;
+        fill: #fff;
     }
 }
