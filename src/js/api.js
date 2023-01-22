@@ -21,7 +21,7 @@ export default class MoviesApi {
       console.error(error);
     }
   }
-  
+
   async getSearchMovies() {
     try {
       const response = await axios.get(
@@ -31,15 +31,14 @@ export default class MoviesApi {
     } catch (error) {
       console.error(error);
     }
-}
-
+  }
 
   async getSearchMovies() {
     try {
       const response = await axios.get(
         `${BASE_URL}/search/movie?api_key=${API_KEY}&page=${this._page}&query=${this.inputValue}`
       );
-      console.log(response);
+      //console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -48,10 +47,11 @@ export default class MoviesApi {
   // ============================api genres============================
   async getGenersMovies() {
     try {
+      // console.log('das');
       const response = await axios.get(
         `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this._page}&with_genres=${this.genreId}`
       );
-      console.log(response);
+      //console.log(response);
       return response;
     } catch (error) {
       console.error(error);

@@ -47,10 +47,12 @@ export default function createPagination(total_results, genreId) {
   });
 
   pagination.on('afterMove', function (eventData) {
+    //  console.log(genreId);
     gallery.innerHTML = '';
     movies.page = eventData.page;
     movies.with_genres = genreId;
     movies.getGenersMovies().then(response => {
+      // console.log(response.data);
       getMoviesInfo(response.data.results);
     });
   });
