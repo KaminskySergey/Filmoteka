@@ -8,6 +8,7 @@ let genreArray = [];
 fetchGenres();
 
 export default function getMoviesInfo(data) {
+  //console.log(data);
   const movies = data;
   movies.forEach(movie => {
     const markup = createMoviesList(movie);
@@ -20,14 +21,14 @@ function createMoviesList(movie) {
         <li class="gallery__item thumb" data-id="${movie.id}">
                 <img onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';" class="gallery__img" loading="lazy" alt='${
                   movie.title
-
                 }' src= '${IMG_URL}${movie.poster_path}'/>
                 <div class="gallery__info">
                   <p class="gallery__title">${movie.title}</p>
-                  <p class="gallery__genre">${decodeGenres(movie.genre_ids)} | ${movie.release_date.substr(0, 4)}</p>
+                  <p class="gallery__genre">${decodeGenres(
+                    movie.genre_ids
+                  )} | ${movie.release_date.substr(0, 4)}</p>
                 </div>
                 </li>`;
-
 }
 async function fetchGenres() {
   const response = await axios.get(GENRES_URL, {
