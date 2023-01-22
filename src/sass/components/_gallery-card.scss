@@ -57,19 +57,32 @@ $desktop: 1280px;
     position: absolute;
     top: 0;
     right: 0;
-    width: 32px;
+    width: 48px;
     height: 32px;
     background-color: var(--color-genre);
     border: none;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
     opacity: 0.9;
-    fill: #000;
-    transition: opacity 350ms var(--cubic-bezier), fill 350ms var(--cubic-bezier);
+    transition: opacity 350ms var(--cubic-bezier);
     cursor: pointer;
     &:focus,
     &:hover {
         opacity: 1;
-        fill: #fff;
+    }
+    &__span{
+        font-family: var(--fontFamily-roboto);
+        font-weight: 500;
+        color: #000;
+        scale: 1;
+        transition: color 400ms var(--cubic-bezier),
+        scale 400ms var(--cubic-bezier);
+    
+    &:focus,
+    &:hover {
+        scale: 1.05;
+        color: #fff;
+    }
+        
     }
 }

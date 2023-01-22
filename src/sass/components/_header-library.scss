@@ -193,7 +193,7 @@
   
 }
 
- .my_library-btn_watched,
+.my_library-btn_watched,
 .my_library-btn_queue {  
     font-family: 'Roboto';   
     font-weight: 500;
@@ -202,24 +202,30 @@
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    
+
     color: #FFFFFF;
     background-color: transparent;
     box-sizing: border-box;
-   width: 130px;
-   height: 42px;
-   @include media-min(768px) {width: 150px;}
-border: 1px solid #FFFFFF;
-border-radius: 5px;
+    width: 130px;
+    height: 42px;
+    @include media-min(768px) {width: 150px;}
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    scale: 1;
+    transition: color 500ms var(--cubic-bezier), 
+    background-color 500ms var(--cubic-bezier),
+    border-color 500ms var(--cubic-bezier),
+    box-shadow 500ms var(--cubic-bezier),
+    scale 500ms var(--cubic-bezier);
 
 &:focus,
-
 &:hover {
   color: var(--bgc-footer-arrow);
   background-color: var(--bgc-btn);
   border-color: var(--bgc-btn);
   box-shadow: 0 0 10px 0 var(--bgc-btn) inset,
     0 0 10px 4px var(--color-category);
+    scale: 1.05
 
 }
 
