@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
-import { updateDocW, updateDocQ } from '../../js/firebase';
+import { updateDocW, updateDocQ, getIdWatched, getIdQueue} from '../../js/firebase';
 // import errorImg from '../images/modal-plug';
 // // import  updateDocInQueue  from '../firebase';
 
@@ -33,12 +33,13 @@ function createMurkupModal({
   overview,
   release_date,
   id,
-}) {
+}, dataKeyWatched, dataKeyQueue) {
   moviePoster = poster_path;
   movieTitle = original_title;
   movieGenres = genres;
   movieReleaseDate = release_date;
   movieID = id;
+  // let filmId = [];
   const genresEl = genres.map(el => {
     return el.name;
   });
@@ -92,15 +93,19 @@ function createMurkupModal({
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
 
-
-          <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched">
-
-            add to Watched
+        <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched">
+        
+        ${dataKeyWatched.includes(movieID + "") ? 'remove from watched' : 'add to Watched'}
+            
           </button>
 
         </li>
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">add to queue</button>
+          <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">
+          
+          ${dataKeyQueue.includes(movieID + "") ? 'remove from queue' : 'add to queue'}
+
+          </button>
         </li>
       </ul>
           <button class="btn-play">Play</button>
@@ -110,9 +115,17 @@ function createMurkupModal({
   `;
 }
 
+// ${console.log(movieID)}
+// ${console.log(dataKey)}
+// ? 'remove from watched' : 'add to Watched'
+// ${dataKey.includes(movieID) ? 'remove from watched' : 'add to Watched'}
+
 async function renderMarkupModal(e) {
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') return;
   toggleModal();
+
+  const filmIdWatched = await getIdWatched();
+  const filmIdQueue = await getIdQueue();
 
   getRef('.backdrop').addEventListener('click', onClickClose);
   window.addEventListener('keydown', onEscClose);
@@ -127,7 +140,7 @@ async function renderMarkupModal(e) {
 
   movieInfo = getAxios.data;
 
-  const markup = createMurkupModal(getAxios.data);
+  const markup = createMurkupModal(movieInfo, filmIdWatched, filmIdQueue);
   getRef('.modal').insertAdjacentHTML('beforeend', markup);
 
   const addToWatchedBtn = document.querySelector('#add-to-watched');
