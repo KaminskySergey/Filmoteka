@@ -364,7 +364,7 @@ export async function getIdWatched() {
   if (docSnap.exists()) {
    
     let data = docSnap.data();
-    dataKey = Object.keys(data)
+    let dataKey = Object.keys(data)
     // console.log(dataKey)
     return dataKey;
   }
@@ -376,7 +376,7 @@ export async function getIdQueue() {
   if (docSnap.exists()) {
    
     let data = docSnap.data();
-    dataKey = Object.keys(data)
+    let dataKey = Object.keys(data)
     // console.log(dataKey)
     return dataKey;
   }
