@@ -44,7 +44,7 @@ function createMurkupModal({
     return el.name;
   });
   return ` 
-<div class="modal-container" data-id="${movieID}">
+<div class="modal-container">
     <img
       class="modal__img"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
@@ -93,7 +93,7 @@ function createMurkupModal({
       <ul class="modal__btn-list">
         <li class="modal__btn-item">
 
-        <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched">
+        <button type="button" class="modal__btn watched" data-action="watched" id="add-to-watched" data-id="${movieID}">
         
         ${dataKeyWatched.includes(movieID + "") ? 'remove from watched' : 'add to Watched'}
             
@@ -101,7 +101,7 @@ function createMurkupModal({
 
         </li>
         <li class="modal__btn-item">
-          <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue">
+          <button type="button" class="modal__btn queue" data-action="queue" id="add-to-queue" data-id="${movieID}">
           
           ${dataKeyQueue.includes(movieID + "") ? 'remove from queue' : 'add to queue'}
 
@@ -124,8 +124,8 @@ async function renderMarkupModal(e) {
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') return;
   toggleModal();
 
-  const filmIdWatched = await getIdWatched();
-  const filmIdQueue = await getIdQueue();
+  let filmIdWatched = await getIdWatched();
+  let filmIdQueue = await getIdQueue();
 
   getRef('.backdrop').addEventListener('click', onClickClose);
   window.addEventListener('keydown', onEscClose);

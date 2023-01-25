@@ -142,42 +142,65 @@ signOutBtn.addEventListener('click', signUserOut);
        
       // export let updateDocW;
       // export let updateDocQ;
-      
-      
+      let state = 0;
+      function inLogin() {
+        auth.onAuthStateChanged((user)=>{
+          if (user) {
+            return state = 1;
+          } else {
+            return state = 0;
+          }
+        })
+      }
+
       export const updateDocW = async function updateDocInWatched(e) { 
-        // console.log(e.target.innerText)
-        if ( e.target.innerText === "ADD TO WATCHED"){
-          e.target.innerText = "REMOVE FROM WATCHED"
-          // console.log("add Watched")
-          const ref = doc(db, "Watched", currentUser.email)
-          // console.log(ref)
-          const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
-            // console.log(movieGenres);
-        } else if (e.target.innerText === "REMOVE FROM WATCHED") {
-          e.target.innerText = "ADD TO WATCHED"
-          // console.log("delete Watched")
-          const ref = doc(db, "Watched", currentUser.email);
-          const id = Number((e.path[4]).getAttribute("data-id"));
-          const docRef = await updateDoc(ref, { [id]: deleteField() })
+        inLogin()
+        if (state === 1) {
+          // console.log(e.target.innerText)
+          if ( e.target.innerText === "ADD TO WATCHED"){
+            e.target.innerText = "REMOVE FROM WATCHED"
+            // console.log("add Watched")
+            const ref = doc(db, "Watched", currentUser.email)
+            // console.log(ref)
+            const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
+              // console.log(movieGenres);
+            Notify.success("You have successfully added a movie to WATCHED")
+          } else if (e.target.innerText === "REMOVE FROM WATCHED") {
+            e.target.innerText = "ADD TO WATCHED"
+            // console.log("delete Watched")
+            const ref = doc(db, "Watched", currentUser.email);
+            const id = Number((e.target).getAttribute("data-id"));
+            const docRef = await updateDoc(ref, { [id]: deleteField() })
+            Notify.info("You have remove a movie from WATCHED")
+          }
+        } else {
+          return Notify.failure("You must firstly login")
         }
       }
         
       export const updateDocQ = async function updateDocInQueue(e) {
+        inLogin()
+        if (state === 1) {
         if (e.target.innerText === "ADD TO QUEUE"){
           e.target.innerText = "REMOVE FROM QUEUE"
           // console.log("add Queue")
           const ref = doc(db, "Queue", currentUser.email)
           const docRef = await updateDoc(ref, { [movieID]: { id: movieID, title: movieTitle, poster: moviePoster, genres: movieGenres, date: movieReleaseDate } })
             // console.log(movieGenres);
+          Notify.success("You have successfully added a movie to QUEUE")
         } else if (e.target.innerText === "REMOVE FROM QUEUE") {
           e.target.innerText = "ADD TO QUEUE"
           // console.log("delete Queue")
           const ref = doc(db, "Queue", currentUser.email);
-          const id = Number((e.path[4]).getAttribute("data-id"));
+          const id = Number((e.target).getAttribute("data-id"));
           // .closest("li").dataset.id;
           // console.log(id)
           const docRef = await updateDoc(ref, { [id]: deleteField() })
+          Notify.info("You have remove a movie from QUEUE")
         }
+      } else {
+        return Notify.failure("You must firstly login")
+      }
 }
         
 async function deleteMovieW(e) {
@@ -275,6 +298,7 @@ function signUserOut() {
 }
 
 auth.onAuthStateChanged((user)=>{
+  // console.log(user)
     if(user){
 
       currentUser = user;
@@ -359,18 +383,26 @@ async function showQueueResult() {
 
 // export let dataKey = [];
 export async function getIdWatched() {
-  var ref = doc(db, "Watched", currentUser.email);
-  const docSnap = await getDoc(ref);
-  if (docSnap.exists()) {
-   
-    let data = docSnap.data();
-    let dataKey = Object.keys(data)
-    // console.log(dataKey)
-    return dataKey;
-  }
+  inLogin()
+  if (state === 1) {
+    var ref = doc(db, "Watched", currentUser.email);
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+     
+      let data = docSnap.data();
+      let dataKey = Object.keys(data)
+      // console.log(dataKey)
+      return dataKey;
+    }
+  } else {
+
+    return [];
+  } 
 }
 
 export async function getIdQueue() {
+  inLogin()
+  if (state === 1) {
   var ref = doc(db, "Queue", currentUser.email);
   const docSnap = await getDoc(ref);
   if (docSnap.exists()) {
@@ -380,6 +412,11 @@ export async function getIdQueue() {
     // console.log(dataKey)
     return dataKey;
   }
+} else {
+
+  return [];
+}
+
 }
 
 async function getDocumentWatched() {
